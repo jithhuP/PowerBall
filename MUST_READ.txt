@@ -1,3 +1,10 @@
+!!주의!!
+ - flutter 기본 세팅을 해야합니다
+   (노마드코더 Flutter로 웹툰 앱 만들기-#2.0 installation
+   참고:https://nomadcoders.co/flutter-for-beginners/lobby)
+ - main menu 파일이 제대로 작동한다면 상관없습니다.
+
+
 2023-04-08 박상현
  - 임시로 main menu를 구성했습니다
  - main menu 구성 파일은 practice/lib/main.dart 입니다
