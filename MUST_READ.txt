@@ -1,0 +1,3 @@
+2023-04-08 박상현
+ - 임시로 main menu를 구성했습니다
+ - main menu 구성 파일은 practice/lib/main.dart 입니다
