@@ -1,19 +1,20 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://www.dhlottery.co.kr/gameResult.do?method=byWin"
+# 웹 페이지에서 HTML 코드 가져오기
+url = 'https://www.dhlottery.co.kr/gameResult.do?method=byWin'
 html = requests.get(url).text
-soup = BeautifulSoup(html, 'html.parser')
 
+# HTML 코드를 파싱하여 필요한 데이터 추출
+soup = BeautifulSoup(html, 'html.parser')
 winning_numbers = []
 
-# 로또 당첨번호 추출
-for i in range(1, 7):
-    num = soup.select(f"div.win_result > div > ul > li:nth-child({i}) > span")[0].text
+winning_count = soup.select('div.win_result > h4 > strong')
+winning_numbers.append(winning_count)
+
+
+for i in range(7):
+    num = soup.select('p > span', {'class': ''})[i].text
     winning_numbers.append(num)
 
-# 보너스 번호 추출
-bonus_num = soup.select("div.win_result > div > div > span")[0].text
-
-print("로또 당첨번호:", winning_numbers)
-print("보너스 번호:", bonus_num)
+print(winning_numbers)
