@@ -11,18 +11,15 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.blue,
         body: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 15.0,
+            horizontal: 2.0,
           ),
           child: Column(
             children: [
-              Row(
-                children: const [
-                  SizedBox(
-                    height: 35.0,
-                  ),
-                ],
+              const SizedBox(
+                height: 35.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,30 +27,54 @@ class App extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Column(
-                        children: const [
-                          SizedBox(
-                            width: 271.0,
-                            child: Text(
-                              "시간",
-                              style: TextStyle(fontSize: 24.0),
-                              textAlign: TextAlign.center,
-                            ),
+                      Container(
+                        height: 59.0,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2,
+                            color: Colors.white,
                           ),
-                        ],
+                        ),
+                        child: const SizedBox(
+                          width: 285.4,
+                          child: Text(
+                            "시간",
+                            style: TextStyle(fontSize: 24.0),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Icon(
-                        Icons.add_alert_outlined,
-                        size: 55.0,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2,
+                            color: Colors.white,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.add_alert_outlined,
+                          size: 55.0,
+                          color: Colors.white,
+                        ),
                       ),
-                      Icon(
-                        Icons.menu,
-                        size: 55.0,
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2,
+                            color: Colors.white,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.menu,
+                          size: 55.0,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
