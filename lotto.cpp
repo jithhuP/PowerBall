@@ -19,7 +19,7 @@ int main() {
 	{164,8,36}, {168,7,37}, {153,7,38}, {173,6,39}, {169,7,40}, 
 	{147,7,41}, {161,6,42}, {182,2,43}, {162,7,44}, {170,14,45}
 	};
-	//1¿­Àº ÃÑ ÅäÅ» È½¼ö ºóµµ, 2¿­Àº 50È½¼ö ºóµµ, 3¿­Àº ´ëÀÀÇÏ´Â ·Î¶Ç ¹øÈ£¸¦ ³ªÅ¸³Â´Ù.
+	//1ì—´ì€ ì´ í† íƒˆ íšŸìˆ˜ ë¹ˆë„, 2ì—´ì€ 50íšŸìˆ˜ ë¹ˆë„, 3ì—´ì€ ëŒ€ì‘í•˜ëŠ” ë¡œë˜ ë²ˆí˜¸ë¥¼ ë‚˜íƒ€ëƒˆë‹¤.
 
 	lotto_mean(lotto);
 	lotto_total(lotto);
@@ -29,7 +29,7 @@ int main() {
 	return 0;
 }
 
-//ÃÑ È½¼ö ºóµµ ³»¸²Â÷¼ø Á¤·Ä
+//ì´ íšŸìˆ˜ ë¹ˆë„ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
 void lotto_total(int total[45][3]) {
 	
 	for (int i = 0; i < 45; i++)
@@ -49,9 +49,9 @@ void lotto_total(int total[45][3]) {
 				total[j][2] = temp;
 			}
 		}
-		cout << "ÃÑ È½¼ö ³»¸²Â÷´Â: " << total[i][0] << " ´ëÀÀ ÇÏ´Â ·Î¶Ç ¼ýÀÚ´Â: " << total[i][2] << endl;
+		cout << "ì´ íšŸìˆ˜ ë‚´ë¦¼ì°¨ëŠ”: " << total[i][0] << " ëŒ€ì‘ í•˜ëŠ” ë¡œë˜ ìˆ«ìžëŠ”: " << total[i][2] << endl;
 	}
-	//³»¸²Â÷ ¾Ë°í¸®Áò
+	//ë‚´ë¦¼ì°¨ ì•Œê³ ë¦¬ì¦˜
 	for(int k = 0; k <45; k++)
 	{
 		for (int l = k + 1; l < 45; l++) 
@@ -70,12 +70,12 @@ void lotto_total(int total[45][3]) {
 			}
 		}
 	}
-	//´Ù½Ã ÀçÁ¤·Ä - ÇÏÁö ¾ÊÀ¸¸é ÀÌÀü µ¥ÀÌÅÍ°¡ ³²¾ÆÀÖ¾î ¿¬¼ÓÀûÀÎ ÇÔ¼ö »ç¿ë ºÒ°¡
+	//ë‹¤ì‹œ ìž¬ì •ë ¬ - í•˜ì§€ ì•Šìœ¼ë©´ ì´ì „ ë°ì´í„°ê°€ ë‚¨ì•„ìžˆì–´ ì—°ì†ì ì¸ í•¨ìˆ˜ ì‚¬ìš© ë¶ˆê°€
 	cout << endl;
 	return;
 }
 
-//50È½¼ö ºóµµ ³»¸²Â÷¼ø Á¤·Ä
+//50íšŸìˆ˜ ë¹ˆë„ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
 void lotto_fifty(int fifty[45][3]) {
 	
 	for (int i = 0; i < 45; i++)
@@ -95,7 +95,7 @@ void lotto_fifty(int fifty[45][3]) {
 				fifty[j][2] = temp;
 			}
 		}
-		cout << "ÃÑ È½¼ö ³»¸²Â÷´Â: " << fifty[i][1] << " ´ëÀÀ ÇÏ´Â ·Î¶Ç ¼ýÀÚ´Â: " << fifty[i][2] << endl;
+		cout << "50íšŸìˆ˜ ë‚´ë¦¼ì°¨ëŠ”: " << fifty[i][1] << " ëŒ€ì‘ í•˜ëŠ” ë¡œë˜ ìˆ«ìžëŠ”: " << fifty[i][2] << endl;
 	}
 
 	for (int k = 0; k < 45; k++)
@@ -120,7 +120,7 @@ void lotto_fifty(int fifty[45][3]) {
 	return;
 }
 
-//ÃÑ È½¼ö¿Í 50È¸ È½¼ö¸¦ ±¸°£ 5·Î ³ª´« ºóµµÀÇ Æò±Õ°ª
+//ì´ íšŸìˆ˜ì™€ 50íšŒ íšŸìˆ˜ë¥¼ êµ¬ê°„ 5ë¡œ ë‚˜ëˆˆ ë¹ˆë„ì˜ í‰ê· ê°’
 void lotto_mean(int total_num[45][3]) {
 	
 	double mean;
