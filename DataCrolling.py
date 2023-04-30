@@ -1,25 +1,59 @@
 import requests
 from bs4 import BeautifulSoup
-raw = requests.get("https://tv.naver.com/r")
-html = BeautifulSoup(raw.text,'html.parser')
-#파이썬 소스코드가 실제 웹페이지 상으로는 어떤 것을 의미하는지 서로
-#서로 연결해서 이해하는 것이 매우 중요하다. 모습이라는 그림과 실제 웹페이지에서의
-#모습을 캡쳐하여 서로를 비교하였으니 이를 서로 비교하면서 이해하는 것이 매우 중요하고 그것을 잘 인식해야한다.
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
-#1 컨테이너 Container 데이터 수집
-container = html.select("div.inner")
-print(container)
-print(container[0])
-#2 컨테이너 Container 내부 데이터 수집
-title = container[0].select_one('dt.title')
-like = container[0].select_one('span_like')
-print(title.text.strip())
-print(like.text.strip())
+#pip install firebase-admin // firebase download
+
+    # 웹 페이지에서 HTML 코드 가져오기
+def getWinningNumber(round_num: int):
+    url = f"https://dhlottery.co.kr/gameResult.do?method=byWin&drwNo={round_num}"
+    html = requests.get(url).text
+
+# HTML 코드를 파싱하여 필요한 데이터 추출
+    soup = BeautifulSoup(html, 'html.parser')
+    winning_numbers = []
+    winning_data = []
+
+#로또 상세 데이터 추출 
+    winning_chat = soup.select('div.win_result > h4 > strong')[0]
+    winning_data.append(winning_chat.text)
+    winning_chat = soup.find('p', {'class': 'desc'})
+    winning_data.append(winning_chat.text)
+
+
+#로또 번호 데이터 추출
+    for i in range(7):
+        num = soup.select('p > span', {'class': ''})[i].text
+        winning_numbers.append(num)
+        winning_data.append(num)
+
+#로또 데이터 출력
+    print(winning_data)
+
+#getWinningNumber의 내용 값을 출력하는 반복문
+for i in range(1, 5):
+    getWinningNumber(i)
+
+
+#서비스 계정 키 파일 경로
+cred = credentials.Certificate('키 파일 경로')
+
+#FireBase 앱 초기화
+firebase_admin.initalize_app(cred)
+
+db = firestore.client()
+
+# 파일로 만든 데이터 추가 
+with open('test.py', 'r') as file:
+    test = file.read()
+doc_ref = db.collection(u'texts').document(u'text')
+doc_ref.set({
+    u'content': test
+})
 
 
 
-#BS4
-#https://m.blog.naver.com/piry777/221696394407
-#requests URL
-#https://me2nuk.com/Python-requests-module-example/#:~:text=requests%20%EB%AA%A8%EB%93%88%EC%9D%B4%EB%9E%80%3F%20requests%EB%8A%94%20python%EC%82%AC%EC%9A%A9%EC%9E%90%EB%93%A4%EC%9D%84%20%EC%9C%84%ED%95%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%84%20%EA%B0%84%EB%8B%A8%ED%95%9C%20Python%EC%9A%A9,python%20%EC%93%B0%EB%A9%B4%EC%84%9C%20requests%20%EB%AA%A8%EB%93%88%EC%9D%84%20%EC%93%B0%EA%B2%8C%20%EB%90%98%EB%8A%94%20%EA%B2%BD%EC%9A%B0%EA%B0%80%20%EB%A7%8E%EC%9D%80%EB%8D%B0
-#https://medium.com/@mjhans83/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%ED%81%AC%EB%A1%A4%EB%A7%81-%ED%95%98%EA%B8%B0-908e78ee09e0
+#참고 링크#
+#https://yogyui.tistory.com/entry/PythonBeautifulSoup-%EB%A1%9C%EB%98%90-645-%EB%8B%B9%EC%B2%A8%EB%B2%88%ED%98%B8-%ED%81%AC%EB%A1%A4%EB%A7%81
