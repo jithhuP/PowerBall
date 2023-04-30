@@ -1,5 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+#pip install firebase-admin // firebase download
+
+#서비스 계정 키 파일 경로
+#cred = credentials.Certificate('키 파일 경로')
+
+#FireBase 앱 초기화
+#firebase_admin.initalize_app(cred)
 
 # 웹 페이지에서 HTML 코드 가져오기
 
