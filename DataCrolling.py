@@ -6,14 +6,7 @@ from firebase_admin import firestore
 
 #pip install firebase-admin // firebase download
 
-#서비스 계정 키 파일 경로
-#cred = credentials.Certificate('키 파일 경로')
-
-#FireBase 앱 초기화
-#firebase_admin.initalize_app(cred)
-
-# 웹 페이지에서 HTML 코드 가져오기
-
+    # 웹 페이지에서 HTML 코드 가져오기
 def getWinningNumber(round_num: int):
     url = f"https://dhlottery.co.kr/gameResult.do?method=byWin&drwNo={round_num}"
     html = requests.get(url).text
@@ -39,7 +32,28 @@ def getWinningNumber(round_num: int):
 #로또 데이터 출력
     print(winning_data)
 
+#getWinningNumber의 내용 값을 출력하는 반복문
 for i in range(1, 5):
     getWinningNumber(i)
 
+
+#서비스 계정 키 파일 경로
+cred = credentials.Certificate('키 파일 경로')
+
+#FireBase 앱 초기화
+firebase_admin.initalize_app(cred)
+
+db = firestore.client()
+
+# 파일로 만든 데이터 추가 
+with open('test.py', 'r') as file:
+    test = file.read()
+doc_ref = db.collection(u'texts').document(u'text')
+doc_ref.set({
+    u'content': test
+})
+
+
+
+#참고 링크#
 #https://yogyui.tistory.com/entry/PythonBeautifulSoup-%EB%A1%9C%EB%98%90-645-%EB%8B%B9%EC%B2%A8%EB%B2%88%ED%98%B8-%ED%81%AC%EB%A1%A4%EB%A7%81
