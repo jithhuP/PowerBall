@@ -47,7 +47,7 @@ class App extends StatelessWidget {
                             const Duration(seconds: 1),
                             builder: (context) {
                               return Text(
-                                '${DateTime.now().year}년 ${DateTime.now().month}월 ${DateTime.now().day}일 ${DateTime.now().hour + 9}시 ${DateTime.now().minute}분',
+                                '${DateTime.now().year}년 ${DateTime.now().month}월 ${DateTime.now().day}일 ${DateTime.now().hour}시 ${DateTime.now().minute}분',
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                   fontSize: 22.0,
@@ -98,6 +98,51 @@ class App extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          '최근 로또 번호',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          width: 208,
+                        ),
+                        Text(
+                          '> 더보기',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/flutter_logo.png'),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
