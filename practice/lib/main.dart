@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/custom_widget.dart';
 import 'package:timer_builder/timer_builder.dart';
 
 void main() {
@@ -99,7 +100,7 @@ class App extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 15.0,
+                height: 35.0,
               ),
               Row(
                 // 최근 로또 번호
@@ -157,6 +158,77 @@ class App extends StatelessWidget {
                           image: AssetImage('assets/images/flutter_logo.png'),
                         ),
                       ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        const Border_text(
+                          text: "최근 로또 추천 번호",
+                          bdColor: Colors.white,
+                          txtColor: Colors.white,
+                          fontsize: 22.0,
+                          bdheight: 55.0,
+                          pdsize: 8.5,
+                        ),
+                        Container(
+                          width: 200.0,
+                          height: 200.0,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        const Border_text(
+                          text: "최근 6개월 내 분석",
+                          bdColor: Colors.white,
+                          txtColor: Colors.white,
+                          fontsize: 22.0,
+                          bdheight: 55.0,
+                          pdsize: 12.5,
+                        ),
+                        Container(
+                          width: 200.0,
+                          height: 200.0,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2.0,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                child: Row(
+                  children: const [
+                    icon_button(
+                      bdColor: Colors.white,
+                    ),
+                    icon_button(
+                      bdColor: Colors.white,
+                    ),
+                    icon_button(
+                      bdColor: Colors.white,
+                    ),
+                    icon_button(
+                      bdColor: Colors.white,
                     ),
                   ],
                 ),
