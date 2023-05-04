@@ -102,6 +102,7 @@ class App extends StatelessWidget {
                 height: 15.0,
               ),
               Row(
+                // 최근 로또 번호
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7.0),
@@ -119,6 +120,7 @@ class App extends StatelessWidget {
                           width: 208,
                         ),
                         Text(
+                          // 더보기 영역
                           '> 더보기',
                           style: TextStyle(
                             color: Colors.white,
@@ -130,18 +132,34 @@ class App extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Container(
-                    width: 150,
-                    height: 150,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/flutter_logo.png'),
+              Padding(
+                // 최근 로또 번호 이미지
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      // 이미지 1
+                      width: 150,
+                      height: 150,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/flutter_logo.png'),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Container(
+                      // 이미지 2
+                      width: 150,
+                      height: 150,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/flutter_logo.png'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               )
             ],
           ),
