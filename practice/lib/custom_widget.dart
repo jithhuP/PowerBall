@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'setting_screen.dart';
 
 class icon_button extends StatelessWidget {
   final Color bdColor;
@@ -61,6 +62,48 @@ class Border_text extends StatelessWidget {
             color: txtColor,
             fontSize: fontsize,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ActionButton extends StatelessWidget {
+  final Color bdcolor;
+  final Color iconcolor;
+  final IconData iCon;
+  final double iconsize;
+
+  const ActionButton(
+      {super.key,
+      required this.bdcolor,
+      required this.iconcolor,
+      required this.iCon,
+      required this.iconsize});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SettingScreen(),
+          ),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 2,
+            color: bdcolor,
+          ),
+        ),
+        // 메뉴 영역
+        child: Icon(
+          iCon,
+          size: iconsize,
+          color: iconcolor,
         ),
       ),
     );

@@ -81,20 +81,12 @@ class App extends StatelessWidget {
                         ),
                       ),
                       //메뉴 영역 테두리
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 2,
-                            color: Colors.white,
-                          ),
-                        ),
-                        // 메뉴 영역
-                        child: const Icon(
-                          Icons.menu,
-                          size: 55.0,
-                          color: Colors.white,
-                        ),
-                      ),
+                      const ActionButton(
+                        bdcolor: Colors.white,
+                        iconcolor: Colors.white,
+                        iCon: Icons.menu,
+                        iconsize: 55.0,
+                      )
                     ],
                   ),
                 ],
