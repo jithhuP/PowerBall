@@ -109,3 +109,27 @@ class ActionButton extends StatelessWidget {
     );
   }
 }
+
+class SettingText extends StatelessWidget {
+  const SettingText({
+    super.key,
+    required this.text,
+    required this.fontcolor,
+    required this.fontsize,
+  });
+
+  final String text;
+  final Color fontcolor;
+  final double fontsize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontsize,
+        color: fontcolor,
+      ),
+    );
+  }
+}
