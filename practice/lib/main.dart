@@ -23,7 +23,7 @@ class App extends StatelessWidget {
             children: [
               // 최상단 빈공간 넣음
               const SizedBox(
-                height: 35.0,
+                height: 55.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,7 +92,7 @@ class App extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 35.0,
+                height: 15.0,
               ),
               Row(
                 // 최근 로또 번호
@@ -206,21 +206,37 @@ class App extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 35.0,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     icon_button(
+                      icon: Icons.description_outlined,
+                      text: '기사',
                       bdColor: Colors.white,
+                      bdwidth: 2.5,
                     ),
                     icon_button(
+                      icon: Icons.onetwothree,
+                      text: '로또',
                       bdColor: Colors.white,
+                      bdwidth: 2.5,
                     ),
                     icon_button(
+                      icon: Icons.add_chart_sharp,
+                      text: '분석',
                       bdColor: Colors.white,
+                      bdwidth: 2.5,
                     ),
                     icon_button(
+                      icon: Icons.diamond_outlined,
+                      text: '행운',
                       bdColor: Colors.white,
+                      bdwidth: 2.5,
                     ),
                   ],
                 ),

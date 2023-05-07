@@ -2,22 +2,48 @@ import 'package:flutter/material.dart';
 import 'setting_screen.dart';
 
 class icon_button extends StatelessWidget {
+  final String text;
   final Color bdColor;
+  final IconData icon;
+  final double bdwidth;
 
   const icon_button({
     super.key,
     required this.bdColor,
+    required this.text,
+    required this.icon,
+    required this.bdwidth,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.0,
-      height: 100.0,
+      width: 90.0,
+      height: 55.0,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
         border: Border.all(
           color: bdColor,
-          width: 2.0,
+          width: bdwidth,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Icon(
+              icon,
+              size: 40.0,
+            ),
+            Text(
+              text,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -45,8 +71,8 @@ class Border_text extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
       height: bdheight,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         border: Border.all(
           color: bdColor,
