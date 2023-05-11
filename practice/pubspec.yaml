@@ -30,6 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   timer_builder: ^2.0.0
+  intl: ^0.18.1
   flutter:
     sdk: flutter
 

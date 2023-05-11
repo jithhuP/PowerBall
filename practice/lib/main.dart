@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/custom_widget.dart';
 import 'package:timer_builder/timer_builder.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const App());
@@ -38,7 +39,7 @@ class App extends StatelessWidget {
                         const Duration(seconds: 1),
                         builder: (context) {
                           return Text(
-                            '${DateTime.now().hour}:${DateTime.now().minute}',
+                            DateFormat('HH:mm').format(DateTime.now()),
                             style: const TextStyle(
                               fontFamily: 'JetBrainsMono',
                               fontSize: 45.0,
