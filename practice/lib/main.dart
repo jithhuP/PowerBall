@@ -31,61 +31,37 @@ class App extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      //시간 영역 테두리
-                      Container(
-                        height: 59.0,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 2,
-                            color: Colors.white,
-                          ),
-                        ),
-                        //시간 영역
-                        child: SizedBox(
-                          width: 285.4,
-                          child: TimerBuilder.periodic(
-                            const Duration(seconds: 1),
-                            builder: (context) {
-                              return Text(
-                                '${DateTime.now().year}년 ${DateTime.now().month}월 ${DateTime.now().day}일 ${DateTime.now().hour}시 ${DateTime.now().minute}분',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                      const SizedBox(
+                        width: 20.0,
+                      ),
+                      TimerBuilder.periodic(
+                        const Duration(seconds: 1),
+                        builder: (context) {
+                          return Text(
+                            '${DateTime.now().hour}:${DateTime.now().minute}',
+                            style: const TextStyle(
+                              fontFamily: 'JetBrainsMono',
+                              fontSize: 45.0,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
+                    children: const [
                       //알림 영역 테두리
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 2,
-                            color: Colors.white,
-                          ),
-                        ),
-                        //알림 영역
-                        child: const Icon(
-                          Icons.add_alert_outlined,
-                          size: 55.0,
-                          color: Colors.white,
-                        ),
+                      Icon(
+                        Icons.add_alert_rounded,
+                        size: 40.0,
+                        color: Colors.black,
                       ),
                       //메뉴 영역 테두리
-                      const ActionButton(
-                        bdcolor: Colors.white,
-                        iconcolor: Colors.white,
+                      ActionButton(
+                        iconcolor: Colors.black,
                         iCon: Icons.menu,
-                        iconsize: 55.0,
+                        iconsize: 40.0,
                       )
                     ],
                   ),
