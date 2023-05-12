@@ -14,7 +14,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 162, 255, 212),
         // 좌우 빈 공간을 넣음
         body: Padding(
           padding: const EdgeInsets.symmetric(
@@ -82,7 +82,7 @@ class App extends StatelessWidget {
                         Text(
                           '최근 로또 번호',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: 20.0,
                               fontWeight: FontWeight.w600),
                         ),
@@ -93,7 +93,7 @@ class App extends StatelessWidget {
                           // 더보기 영역
                           '> 더보기',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 18.0,
                           ),
                         ),
@@ -102,79 +102,89 @@ class App extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                // 최근 로또 번호 이미지
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      // 이미지 1
-                      width: 150,
-                      height: 150,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/flutter_logo.png'),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      // 이미지 2
-                      width: 150,
-                      height: 150,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/flutter_logo.png'),
-                        ),
-                      ),
-                    ),
-                  ],
+              const SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                alignment: AlignmentDirectional.center,
+                height: 130,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 4.0,
+                  ),
+                  color: const Color.fromARGB(255, 180, 250, 162),
+                  borderRadius: BorderRadius.circular(25.0),
                 ),
+                child: const Padding(
+                  // 최근 로또 번호 이미지
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Text(
+                    '1 - 2 - 3 - 4 - 5 - 6',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 45.0,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 40.0,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Border_text(
-                          text: "최근 로또 추천 번호",
-                          bdColor: Colors.white,
-                          txtColor: Colors.white,
+                          text: "최근 추천 번호",
+                          bdColor: Colors.black,
+                          txtColor: Colors.black,
                           fontsize: 22.0,
                           bdheight: 55.0,
                           pdsize: 8.5,
                         ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
                         Container(
-                          width: 200.0,
+                          width: 195.0,
                           height: 200.0,
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25.0),
                             border: Border.all(
-                              color: Colors.white,
-                              width: 2.0,
+                              color: Colors.black,
+                              width: 4.0,
                             ),
                           ),
                         ),
                       ],
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Border_text(
-                          text: "최근 6개월 내 분석",
-                          bdColor: Colors.white,
-                          txtColor: Colors.white,
+                          text: "로또 번호 분석",
+                          bdColor: Colors.black,
+                          txtColor: Colors.black,
                           fontsize: 22.0,
                           bdheight: 55.0,
                           pdsize: 12.5,
                         ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
                         Container(
-                          width: 200.0,
+                          width: 195.0,
                           height: 200.0,
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25.0),
                             border: Border.all(
-                              color: Colors.white,
-                              width: 2.0,
+                              color: Colors.black,
+                              width: 4.0,
                             ),
                           ),
                         )
@@ -194,25 +204,25 @@ class App extends StatelessWidget {
                     icon_button(
                       icon: Icons.description_outlined,
                       text: '기사',
-                      bdColor: Colors.white,
+                      bdColor: Colors.black,
                       bdwidth: 2.5,
                     ),
                     icon_button(
                       icon: Icons.onetwothree,
                       text: '로또',
-                      bdColor: Colors.white,
+                      bdColor: Colors.black,
                       bdwidth: 2.5,
                     ),
                     icon_button(
                       icon: Icons.add_chart_sharp,
                       text: '분석',
-                      bdColor: Colors.white,
+                      bdColor: Colors.black,
                       bdwidth: 2.5,
                     ),
                     icon_button(
                       icon: Icons.diamond_outlined,
                       text: '행운',
-                      bdColor: Colors.white,
+                      bdColor: Colors.black,
                       bdwidth: 2.5,
                     ),
                   ],

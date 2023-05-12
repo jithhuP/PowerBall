@@ -39,8 +39,9 @@ class icon_button extends StatelessWidget {
             Text(
               text,
               style: const TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 20.0,
+                fontFamily: 'KBOGothic',
               ),
             ),
           ],
@@ -70,25 +71,14 @@ class Border_text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: bdheight,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: bdColor,
-          width: 2.2,
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: pdsize),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: txtColor,
-            fontSize: fontsize,
-          ),
-        ),
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontWeight: FontWeight.w600,
+        color: txtColor,
+        fontSize: fontsize,
+        fontFamily: 'KBOGothic',
       ),
     );
   }

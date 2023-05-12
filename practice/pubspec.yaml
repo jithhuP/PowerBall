@@ -79,6 +79,9 @@ flutter:
     - family: JetBrainsMono
       fonts:
       - asset: assets/fonts/JetBrainsMono-Bold.ttf
+    - family: KBOGothic
+      fonts:
+      - asset: assets/fonts/KBO Dia Gothic_medium.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
