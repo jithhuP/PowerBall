@@ -82,17 +82,20 @@ class App extends StatelessWidget {
                         Text(
                           '최근 로또 번호',
                           style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w600),
+                            color: Colors.black,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'KBOGothic',
+                          ),
                         ),
                         SizedBox(
-                          width: 208,
+                          width: 205,
                         ),
+                        // 더보기 영역
                         Text(
-                          // 더보기 영역
                           '> 더보기',
                           style: TextStyle(
+                            fontFamily: 'KBOGothic',
                             color: Colors.black,
                             fontSize: 18.0,
                           ),
