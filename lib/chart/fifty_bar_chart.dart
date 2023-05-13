@@ -24,18 +24,6 @@ class _MyHomePageState extends State<_MyHomePage> {
 
   @override
   void initState() {
-    data_1 = [
-      _ChartData('1~5', 169.4),
-      _ChartData('6~10', 158.8),
-      _ChartData('11~15', 172.6),
-      _ChartData('16~20', 170.2),
-      _ChartData('21~25', 154.6),
-      _ChartData('26~30', 161.6),
-      _ChartData('31~35', 169.6),
-      _ChartData('36~40', 168.4),
-      _ChartData('41~45', 164.4)
-    ];
-
     data_2 = [
       _ChartData('1~5', 6.6),
       _ChartData('6~10', 6.8),
@@ -47,7 +35,6 @@ class _MyHomePageState extends State<_MyHomePage> {
       _ChartData('36~40', 8.2),
       _ChartData('41~45', 7.2)
     ];
-
     _tooltip = TooltipBehavior(enable: true);
     super.initState();
   }
