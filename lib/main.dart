@@ -117,7 +117,6 @@ class App extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 child: const Padding(
-                  // 최근 로또 번호 이미지
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
                     '1 - 2 - 3 - 4 - 5 - 6',
@@ -150,6 +149,7 @@ class App extends StatelessWidget {
                         const SizedBox(
                           height: 15.0,
                         ),
+                        // 통계 : 최근 추천 번호
                         Container(
                           width: 195.0,
                           height: 200.0,
@@ -160,6 +160,7 @@ class App extends StatelessWidget {
                               width: 4.0,
                             ),
                           ),
+                          // child: ,
                         ),
                       ],
                     ),
@@ -177,6 +178,7 @@ class App extends StatelessWidget {
                         const SizedBox(
                           height: 15.0,
                         ),
+                        // 통계 : 로또 번호 분석
                         Container(
                           width: 195.0,
                           height: 200.0,
@@ -187,7 +189,8 @@ class App extends StatelessWidget {
                               width: 4.0,
                             ),
                           ),
-                        )
+                          // child: ,
+                        ),
                       ],
                     ),
                   ],
@@ -201,24 +204,28 @@ class App extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
+                    // 버튼 : 기사
                     icon_button(
                       icon: Icons.description_outlined,
                       text: '기사',
                       bdColor: Colors.black,
                       bdwidth: 2.5,
                     ),
+                    // 버튼 : 로또
                     icon_button(
                       icon: Icons.onetwothree,
                       text: '로또',
                       bdColor: Colors.black,
                       bdwidth: 2.5,
                     ),
+                    // 버튼 : 분석
                     icon_button(
                       icon: Icons.add_chart_sharp,
                       text: '분석',
                       bdColor: Colors.black,
                       bdwidth: 2.5,
                     ),
+                    // 버튼 : 행운
                     icon_button(
                       icon: Icons.diamond_outlined,
                       text: '행운',
