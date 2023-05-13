@@ -114,8 +114,7 @@ class PieChart1State extends State {
               Indicator(
                   color: AppColors.contentColorBlack,
                   text: '36~40',
-                  isSquare: true
-              ),
+                  isSquare: true),
               SizedBox(
                 height: 4,
               ),
