@@ -121,13 +121,14 @@ class App extends StatelessWidget {
                 ),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text(
+                  child:
+                      LottoBall(), /*Text(
                     '1 - 2 - 3 - 4 - 5 - 6',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 45.0,
                     ),
-                  ),
+                  ),*/
                 ),
               ),
               const SizedBox(

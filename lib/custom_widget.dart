@@ -139,3 +139,32 @@ class SettingText extends StatelessWidget {
     );
   }
 }
+
+class LottoBall extends StatelessWidget {
+  const LottoBall({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      height: 60,
+      width: 60,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(30.0),
+        border: Border.all(
+          color: Colors.blue,
+          width: 5.0,
+        ),
+      ),
+      child: const Text(
+        '10',
+        style: TextStyle(
+          fontSize: 35.0,
+          fontFamily: 'Jersey',
+          color: Color.fromARGB(255, 240, 240, 240),
+        ),
+      ),
+    );
+  }
+}
