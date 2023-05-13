@@ -1,6 +1,6 @@
-import 'package:open_source_project/resource/app_resource.dart';
+import 'package:PowerBall/resource/app_resource.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:open_source_project/widget/indicator.dart';
+import 'package:PowerBall/widget/indicator.dart';
 import 'package:flutter/material.dart';
 
 class PieChartSample1 extends StatefulWidget {
