@@ -135,6 +135,7 @@ class SettingText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontsize,
         color: fontcolor,
+        fontFamily: 'KBOGothic',
       ),
     );
   }
