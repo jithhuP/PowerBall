@@ -147,7 +147,12 @@ class SettingText extends StatelessWidget {
 }
 
 class LottoBall extends StatelessWidget {
-  const LottoBall({super.key});
+  final Color numColor;
+
+  const LottoBall({
+    super.key,
+    required this.numColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -163,12 +168,12 @@ class LottoBall extends StatelessWidget {
           width: 5.0,
         ),
       ),
-      child: const Text(
+      child: Text(
         '10',
         style: TextStyle(
           fontSize: 35.0,
           fontFamily: 'Jersey',
-          color: Color.fromARGB(255, 240, 240, 240),
+          color: numColor,
         ),
       ),
     );

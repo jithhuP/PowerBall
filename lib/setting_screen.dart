@@ -47,11 +47,11 @@ class SettingScreen extends StatelessWidget {
               children: [
                 SettingText(
                     text: 'Version : $version',
-                    fontcolor: const Color.fromARGB(143, 0, 0, 0),
+                    fontcolor: ftColor[0 + darkMode],
                     fontsize: 15.0),
                 SettingText(
                   text: 'Update date : $date',
-                  fontcolor: const Color.fromARGB(143, 0, 0, 0),
+                  fontcolor: ftColor[0 + darkMode],
                   fontsize: 15.0,
                 ),
               ],

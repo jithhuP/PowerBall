@@ -158,10 +158,11 @@ class App extends State<MyApp> {
                   color: ftColor[2 + darkMode],
                   borderRadius: BorderRadius.circular(25.0),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child:
-                      LottoBall(), /*Text(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: LottoBall(
+                    numColor: ftColor[0 + darkMode],
+                  ), /*Text(
                     '1 - 2 - 3 - 4 - 5 - 6',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -197,6 +198,7 @@ class App extends State<MyApp> {
                           width: 195.0,
                           height: 200.0,
                           decoration: BoxDecoration(
+                            color: ftColor[2 + darkMode],
                             borderRadius: BorderRadius.circular(25.0),
                             border: Border.all(
                               color: ftColor[0 + darkMode],
@@ -226,6 +228,7 @@ class App extends State<MyApp> {
                           width: 195.0,
                           height: 200.0,
                           decoration: BoxDecoration(
+                            color: ftColor[2 + darkMode],
                             borderRadius: BorderRadius.circular(25.0),
                             border: Border.all(
                               color: ftColor[0 + darkMode],
