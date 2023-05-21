@@ -46,14 +46,23 @@ class App extends State<MyApp> {
               const SizedBox(
                 height: 20.0,
               ),
-              Switch(
-                value: isSwitched,
-                onChanged: (value) {
-                  setState(() {
-                    value ? darkMode = 3 : darkMode = 0;
-                    isSwitched = value;
-                  });
-                },
+              Row(
+                children: [
+                  Icon(
+                    Icons.dark_mode,
+                    size: 35.0,
+                    color: ftColor[0 + darkMode],
+                  ),
+                  Switch(
+                    value: isSwitched,
+                    onChanged: (value) {
+                      setState(() {
+                        value ? darkMode = 3 : darkMode = 0;
+                        isSwitched = value;
+                      });
+                    },
+                  ),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -241,6 +250,8 @@ class App extends State<MyApp> {
                     // 버튼 : 기사
                     icon_button(
                       icon: Icons.description_outlined,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
                       text: '기사',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
@@ -248,6 +259,8 @@ class App extends State<MyApp> {
                     // 버튼 : 로또
                     icon_button(
                       icon: Icons.onetwothree,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
                       text: '로또',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
@@ -255,6 +268,8 @@ class App extends State<MyApp> {
                     // 버튼 : 분석
                     icon_button(
                       icon: Icons.add_chart_sharp,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
                       text: '분석',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
@@ -262,6 +277,8 @@ class App extends State<MyApp> {
                     // 버튼 : 행운
                     icon_button(
                       icon: Icons.diamond_outlined,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
                       text: '행운',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,

@@ -3,13 +3,17 @@ import 'setting_screen.dart';
 
 class icon_button extends StatelessWidget {
   final String text;
-  Color bdColor;
+  final Color bdColor;
+  final Color txtColor;
+  final Color iconColor;
   final IconData icon;
   final double bdwidth;
 
-  icon_button({
+  const icon_button({
     super.key,
     required this.bdColor,
+    required this.iconColor,
+    required this.txtColor,
     required this.text,
     required this.icon,
     required this.bdwidth,
@@ -35,11 +39,12 @@ class icon_button extends StatelessWidget {
             Icon(
               icon,
               size: 40.0,
+              color: iconColor,
             ),
             Text(
               text,
-              style: const TextStyle(
-                color: Colors.black,
+              style: TextStyle(
+                color: txtColor,
                 fontSize: 20.0,
                 fontFamily: 'KBOGothic',
               ),
@@ -53,13 +58,13 @@ class icon_button extends StatelessWidget {
 
 class Border_text extends StatelessWidget {
   final String text;
-  Color bdColor;
-  Color txtColor;
+  final Color bdColor;
+  final Color txtColor;
   final double fontsize;
   final double bdheight;
   final double pdsize;
 
-  Border_text({
+  const Border_text({
     super.key,
     required this.text,
     required this.bdColor,
@@ -85,11 +90,11 @@ class Border_text extends StatelessWidget {
 }
 
 class ActionButton extends StatelessWidget {
-  Color iconcolor;
+  final Color iconcolor;
   final IconData iCon;
   final double iconsize;
 
-  ActionButton(
+  const ActionButton(
       {super.key,
       required this.iconcolor,
       required this.iCon,
@@ -117,7 +122,7 @@ class ActionButton extends StatelessWidget {
 }
 
 class SettingText extends StatelessWidget {
-  SettingText({
+  const SettingText({
     super.key,
     required this.text,
     required this.fontcolor,
@@ -125,7 +130,7 @@ class SettingText extends StatelessWidget {
   });
 
   final String text;
-  Color fontcolor;
+  final Color fontcolor;
   final double fontsize;
 
   @override
