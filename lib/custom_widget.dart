@@ -3,11 +3,11 @@ import 'setting_screen.dart';
 
 class icon_button extends StatelessWidget {
   final String text;
-  final Color bdColor;
+  Color bdColor;
   final IconData icon;
   final double bdwidth;
 
-  const icon_button({
+  icon_button({
     super.key,
     required this.bdColor,
     required this.text,
@@ -53,13 +53,13 @@ class icon_button extends StatelessWidget {
 
 class Border_text extends StatelessWidget {
   final String text;
-  final Color bdColor;
-  final Color txtColor;
+  Color bdColor;
+  Color txtColor;
   final double fontsize;
   final double bdheight;
   final double pdsize;
 
-  const Border_text({
+  Border_text({
     super.key,
     required this.text,
     required this.bdColor,
@@ -85,11 +85,11 @@ class Border_text extends StatelessWidget {
 }
 
 class ActionButton extends StatelessWidget {
-  final Color iconcolor;
+  Color iconcolor;
   final IconData iCon;
   final double iconsize;
 
-  const ActionButton(
+  ActionButton(
       {super.key,
       required this.iconcolor,
       required this.iCon,
@@ -117,7 +117,7 @@ class ActionButton extends StatelessWidget {
 }
 
 class SettingText extends StatelessWidget {
-  const SettingText({
+  SettingText({
     super.key,
     required this.text,
     required this.fontcolor,
@@ -125,7 +125,7 @@ class SettingText extends StatelessWidget {
   });
 
   final String text;
-  final Color fontcolor;
+  Color fontcolor;
   final double fontsize;
 
   @override

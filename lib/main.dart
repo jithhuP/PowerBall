@@ -3,28 +3,57 @@ import 'package:practice/custom_widget.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 
-void main() {
-  runApp(const App());
+List<Color> ftColor = [
+  Colors.black,
+  const Color.fromARGB(255, 162, 255, 212),
+  const Color.fromARGB(255, 180, 250, 162),
+  Colors.amber,
+  Colors.black,
+  const Color.fromARGB(255, 34, 34, 34)
+];
+
+int darkMode = 0;
+bool isSwitched = false;
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return App();
+  }
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+void main() {
+  runApp(const MyApp());
+}
 
+class App extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 162, 255, 212),
+        backgroundColor: ftColor[1 + darkMode],
         // 좌우 빈 공간을 넣음
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 2.0,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 최상단 빈공간 넣음
               const SizedBox(
-                height: 55.0,
+                height: 20.0,
+              ),
+              Switch(
+                value: isSwitched,
+                onChanged: (value) {
+                  setState(() {
+                    value ? darkMode = 3 : darkMode = 0;
+                    isSwitched = value;
+                  });
+                },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,7 +69,8 @@ class App extends StatelessWidget {
                         builder: (context) {
                           return Text(
                             DateFormat('HH:mm').format(DateTime.now()),
-                            style: const TextStyle(
+                            style: TextStyle(
+                              color: ftColor[0 + darkMode],
                               fontFamily: 'JetBrainsMono',
                               fontSize: 45.0,
                             ),
@@ -51,16 +81,16 @@ class App extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
+                    children: [
                       //알림 영역 테두리
                       Icon(
                         Icons.add_alert_rounded,
                         size: 40.0,
-                        color: Colors.black,
+                        color: ftColor[0 + darkMode],
                       ),
                       //메뉴 영역 테두리
                       ActionButton(
-                        iconcolor: Colors.black,
+                        iconcolor: ftColor[0 + darkMode],
                         iCon: Icons.menu,
                         iconsize: 40.0,
                       )
@@ -78,17 +108,17 @@ class App extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 7.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
                           '최근 로또 번호',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: ftColor[0 + darkMode],
                             fontSize: 20.0,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'KBOGothic',
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 205,
                         ),
                         // 더보기 영역
@@ -96,7 +126,7 @@ class App extends StatelessWidget {
                           '> 더보기',
                           style: TextStyle(
                             fontFamily: 'KBOGothic',
-                            color: Colors.black,
+                            color: ftColor[0 + darkMode],
                             fontSize: 18.0,
                           ),
                         ),
@@ -113,10 +143,10 @@ class App extends StatelessWidget {
                 height: 130,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.black,
+                    color: ftColor[0 + darkMode],
                     width: 4.0,
                   ),
-                  color: const Color.fromARGB(255, 180, 250, 162),
+                  color: ftColor[2 + darkMode],
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 child: const Padding(
@@ -142,10 +172,10 @@ class App extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Border_text(
+                        Border_text(
                           text: "최근 추천 번호",
-                          bdColor: Colors.black,
-                          txtColor: Colors.black,
+                          bdColor: ftColor[0 + darkMode],
+                          txtColor: ftColor[0 + darkMode],
                           fontsize: 22.0,
                           bdheight: 55.0,
                           pdsize: 8.5,
@@ -160,7 +190,7 @@ class App extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
                             border: Border.all(
-                              color: Colors.black,
+                              color: ftColor[0 + darkMode],
                               width: 4.0,
                             ),
                           ),
@@ -171,10 +201,10 @@ class App extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Border_text(
+                        Border_text(
                           text: "로또 번호 분석",
-                          bdColor: Colors.black,
-                          txtColor: Colors.black,
+                          bdColor: ftColor[0 + darkMode],
+                          txtColor: ftColor[0 + darkMode],
                           fontsize: 22.0,
                           bdheight: 55.0,
                           pdsize: 12.5,
@@ -189,7 +219,7 @@ class App extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
                             border: Border.all(
-                              color: Colors.black,
+                              color: ftColor[0 + darkMode],
                               width: 4.0,
                             ),
                           ),
@@ -207,33 +237,33 @@ class App extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     // 버튼 : 기사
                     icon_button(
                       icon: Icons.description_outlined,
                       text: '기사',
-                      bdColor: Colors.black,
+                      bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
                     ),
                     // 버튼 : 로또
                     icon_button(
                       icon: Icons.onetwothree,
                       text: '로또',
-                      bdColor: Colors.black,
+                      bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
                     ),
                     // 버튼 : 분석
                     icon_button(
                       icon: Icons.add_chart_sharp,
                       text: '분석',
-                      bdColor: Colors.black,
+                      bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
                     ),
                     // 버튼 : 행운
                     icon_button(
                       icon: Icons.diamond_outlined,
                       text: '행운',
-                      bdColor: Colors.black,
+                      bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
                     ),
                   ],

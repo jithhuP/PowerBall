@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/main.dart';
 import 'custom_widget.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -9,19 +10,19 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 162, 255, 212),
+      backgroundColor: ftColor[1 + darkMode],
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.black,
+        iconTheme: IconThemeData(
+          color: ftColor[0 + darkMode],
         ),
-        backgroundColor: const Color.fromARGB(255, 180, 250, 162),
+        backgroundColor: ftColor[2 + darkMode],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Text(
               '설정',
               style: TextStyle(
-                color: Colors.black,
+                color: ftColor[0 + darkMode],
                 fontFamily: 'KBOGothic',
               ),
             ),
@@ -31,11 +32,11 @@ class SettingScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: SettingText(
               text: "App 정보",
-              fontcolor: Colors.black,
+              fontcolor: ftColor[0 + darkMode],
               fontsize: 25.0,
             ),
           ),
