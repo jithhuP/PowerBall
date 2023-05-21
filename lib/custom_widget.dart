@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'setting_screen.dart';
 
 class icon_button extends StatelessWidget {
   final String text;
@@ -93,12 +92,15 @@ class ActionButton extends StatelessWidget {
   final Color iconcolor;
   final IconData iCon;
   final double iconsize;
+  final Widget linkedScreen;
 
-  const ActionButton(
-      {super.key,
-      required this.iconcolor,
-      required this.iCon,
-      required this.iconsize});
+  const ActionButton({
+    super.key,
+    required this.iconcolor,
+    required this.iCon,
+    required this.iconsize,
+    required this.linkedScreen,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +109,7 @@ class ActionButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const SettingScreen(),
+            builder: (context) => linkedScreen,
           ),
         );
       },

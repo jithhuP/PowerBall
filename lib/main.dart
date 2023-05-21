@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:practice/alert_screen.dart';
 import 'package:practice/custom_widget.dart';
+import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 
@@ -91,17 +93,19 @@ class App extends State<MyApp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      //알림 영역 테두리
-                      Icon(
-                        Icons.add_alert_rounded,
-                        size: 40.0,
-                        color: ftColor[0 + darkMode],
+                      //알림 영역
+                      ActionButton(
+                        iconcolor: ftColor[0 + darkMode],
+                        iCon: Icons.add_alert_rounded,
+                        iconsize: 40.0,
+                        linkedScreen: const AlertScreen(),
                       ),
-                      //메뉴 영역 테두리
+                      //메뉴 영역
                       ActionButton(
                         iconcolor: ftColor[0 + darkMode],
                         iCon: Icons.menu,
                         iconsize: 40.0,
+                        linkedScreen: const SettingScreen(),
                       )
                     ],
                   ),
