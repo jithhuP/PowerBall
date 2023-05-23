@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// 최하단 메뉴 4개 버튼 Class
 class icon_button extends StatelessWidget {
   final String text;
   final Color bdColor;
@@ -20,11 +21,13 @@ class icon_button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 버튼 색상 및 테두리
     return Container(
       width: 90.0,
       height: 55.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25.0),
+        // 테두리
         border: Border.all(
           color: bdColor,
           width: bdwidth,
@@ -35,11 +38,13 @@ class icon_button extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            // 아이콘
             Icon(
               icon,
               size: 40.0,
               color: iconColor,
             ),
+            // 텍스트
             Text(
               text,
               style: TextStyle(
@@ -55,6 +60,7 @@ class icon_button extends StatelessWidget {
   }
 }
 
+// 굵은 텍스트 클래스(최근 추천 번호, 로또 번호 분석)
 class Border_text extends StatelessWidget {
   final String text;
   final Color bdColor;
@@ -75,6 +81,7 @@ class Border_text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 텍스트
     return Text(
       text,
       textAlign: TextAlign.center,
@@ -88,6 +95,7 @@ class Border_text extends StatelessWidget {
   }
 }
 
+// 상호작용 버튼 클래스(알림, 메뉴)
 class ActionButton extends StatelessWidget {
   final Color iconcolor;
   final IconData iCon;
@@ -104,16 +112,19 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 상호작용 반응 클래스
     return GestureDetector(
+      // 클릭에 반응
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
+            // 해당 화면으로 이동
             builder: (context) => linkedScreen,
           ),
         );
       },
-      // 메뉴 영역
+      // 아이콘
       child: Icon(
         iCon,
         size: iconsize,
@@ -123,6 +134,7 @@ class ActionButton extends StatelessWidget {
   }
 }
 
+// 메뉴 화면 텍스트 클래스
 class SettingText extends StatelessWidget {
   const SettingText({
     super.key,
@@ -137,6 +149,7 @@ class SettingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 텍스트
     return Text(
       text,
       style: TextStyle(
@@ -148,6 +161,7 @@ class SettingText extends StatelessWidget {
   }
 }
 
+// 로또 번호 출력 클래스
 class LottoBall extends StatelessWidget {
   final Color numColor;
 
@@ -158,10 +172,12 @@ class LottoBall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 공 디자인 영역
     return Container(
       alignment: Alignment.center,
       height: 60,
       width: 60,
+      // 색상
       decoration: BoxDecoration(
         color: Colors.blue,
         borderRadius: BorderRadius.circular(30.0),
@@ -170,6 +186,7 @@ class LottoBall extends StatelessWidget {
           width: 5.0,
         ),
       ),
+      // 텍스트
       child: Text(
         '10',
         style: TextStyle(

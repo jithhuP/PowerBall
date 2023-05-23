@@ -10,15 +10,19 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 배경 색상
       backgroundColor: ftColor[1 + darkMode],
       appBar: AppBar(
+        // 화살표 색상
         iconTheme: IconThemeData(
           color: ftColor[0 + darkMode],
         ),
+        // 최상단 Bar 색상
         backgroundColor: ftColor[2 + darkMode],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Bar 텍스트
             Text(
               '설정',
               style: TextStyle(
@@ -32,6 +36,7 @@ class SettingScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // App 정보 텍스트
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SettingText(
@@ -45,10 +50,12 @@ class SettingScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Version 텍스트
                 SettingText(
                     text: 'Version : $version',
                     fontcolor: ftColor[0 + darkMode],
                     fontsize: 15.0),
+                // Update date 텍스트
                 SettingText(
                   text: 'Update date : $date',
                   fontcolor: ftColor[0 + darkMode],

@@ -5,6 +5,7 @@ import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 
+// 일반 색상 및 다크모드 색상
 List<Color> ftColor = [
   Colors.black,
   const Color.fromARGB(255, 162, 255, 212),
@@ -14,6 +15,7 @@ List<Color> ftColor = [
   const Color.fromARGB(255, 34, 34, 34)
 ];
 
+// 다크모드 계수
 int darkMode = 0;
 bool isSwitched = false;
 
@@ -48,13 +50,16 @@ class App extends State<MyApp> {
               const SizedBox(
                 height: 20.0,
               ),
+              // 다크모드 스위치 영역
               Row(
                 children: [
+                  // 다크모드 스위치 아이콘
                   Icon(
                     Icons.dark_mode,
                     size: 35.0,
                     color: ftColor[0 + darkMode],
                   ),
+                  // 다크모드 스위치
                   Switch(
                     value: isSwitched,
                     onChanged: (value) {
@@ -72,13 +77,16 @@ class App extends State<MyApp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // 빈 공간 넣기
                       const SizedBox(
                         width: 20.0,
                       ),
+                      // 시계 영역
                       TimerBuilder.periodic(
                         const Duration(seconds: 1),
                         builder: (context) {
                           return Text(
+                            // 시, 분으로 표시
                             DateFormat('HH:mm').format(DateTime.now()),
                             style: TextStyle(
                               color: ftColor[0 + darkMode],
@@ -98,6 +106,7 @@ class App extends State<MyApp> {
                         iconcolor: ftColor[0 + darkMode],
                         iCon: Icons.add_alert_rounded,
                         iconsize: 40.0,
+                        // 알림 화면으로 연결
                         linkedScreen: const AlertScreen(),
                       ),
                       //메뉴 영역
@@ -105,6 +114,7 @@ class App extends State<MyApp> {
                         iconcolor: ftColor[0 + darkMode],
                         iCon: Icons.menu,
                         iconsize: 40.0,
+                        // 메뉴(설정) 화면으로 연결
                         linkedScreen: const SettingScreen(),
                       )
                     ],
@@ -148,12 +158,15 @@ class App extends State<MyApp> {
                   ),
                 ],
               ),
+              // 빈 공간 넣기
               const SizedBox(
                 height: 10.0,
               ),
+              // 추천 번호 표시 영역
               Container(
                 alignment: AlignmentDirectional.center,
                 height: 130,
+                // 색상 및 테두리
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: ftColor[0 + darkMode],
@@ -162,8 +175,10 @@ class App extends State<MyApp> {
                   color: ftColor[2 + darkMode],
                   borderRadius: BorderRadius.circular(25.0),
                 ),
+                // 번호 표시
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  // 로또 번호 출력 함수
                   child: LottoBall(
                     numColor: ftColor[0 + darkMode],
                   ), /*Text(
@@ -175,6 +190,7 @@ class App extends State<MyApp> {
                   ),*/
                 ),
               ),
+              // 빈 공간 넣기
               const SizedBox(
                 height: 40.0,
               ),
@@ -186,6 +202,7 @@ class App extends State<MyApp> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // 최근 추천 번호 텍스트
                         Border_text(
                           text: "최근 추천 번호",
                           bdColor: ftColor[0 + darkMode],
@@ -194,6 +211,7 @@ class App extends State<MyApp> {
                           bdheight: 55.0,
                           pdsize: 8.5,
                         ),
+                        // 빈공간 넣기
                         const SizedBox(
                           height: 15.0,
                         ),
@@ -201,6 +219,7 @@ class App extends State<MyApp> {
                         Container(
                           width: 195.0,
                           height: 200.0,
+                          // 영역 색상
                           decoration: BoxDecoration(
                             color: ftColor[2 + darkMode],
                             borderRadius: BorderRadius.circular(25.0),
@@ -216,6 +235,7 @@ class App extends State<MyApp> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // 로또 번호 분석 텍스트
                         Border_text(
                           text: "로또 번호 분석",
                           bdColor: ftColor[0 + darkMode],
@@ -224,6 +244,7 @@ class App extends State<MyApp> {
                           bdheight: 55.0,
                           pdsize: 12.5,
                         ),
+                        // 빈 공간 넣기
                         const SizedBox(
                           height: 15.0,
                         ),
@@ -231,6 +252,7 @@ class App extends State<MyApp> {
                         Container(
                           width: 195.0,
                           height: 200.0,
+                          // 영역 색상
                           decoration: BoxDecoration(
                             color: ftColor[2 + darkMode],
                             borderRadius: BorderRadius.circular(25.0),
@@ -239,16 +261,17 @@ class App extends State<MyApp> {
                               width: 4.0,
                             ),
                           ),
-                          // child: ,
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
+              // 빈 공간 넣기
               const SizedBox(
                 height: 35.0,
               ),
+              // 최하단 버튼 영역
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
                 child: Row(
