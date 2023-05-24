@@ -1,8 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
 
 #pip install firebase-admin // firebase download
 
@@ -36,14 +33,17 @@ def getWinningNumber(round_num: int):
 for i in range(1, 5):
     getWinningNumber(i)
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+from firebase_admin import firestore
 
 #서비스 계정 키 파일 경로
-cred = credentials.Certificate('키 파일 경로')
+cred = credentials.Certificate("C:/firebase/key.json")
 
-#FireBase 앱 초기화
-firebase_admin.initalize_app(cred)
+firebase_admin.initialize_app(cred)
 
-db = firestore.client()
+firebase_database = firestore.client()
 
 # 파일로 만든 데이터 추가 
 with open('test.py', 'r') as file:
@@ -52,6 +52,13 @@ doc_ref = db.collection(u'texts').document(u'text')
 doc_ref.set({
     u'content': test
 })
+
+
+#링크 데이터 추가하기.
+#기사 크롤링 파일 하나 더 만들기
+#내용 정리하기.
+#firebase에 데이터 값 집어넣기.
+#파일로 만든 후 데이터를 추가할 것인지 아니면 그냥 직접적으로 firebase에 넣을 것인지 생각하기.
 
 
 
