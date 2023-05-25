@@ -8,6 +8,7 @@ class icon_button extends StatelessWidget {
   final Color iconColor;
   final IconData icon;
   final double bdwidth;
+  final Widget linkedScreen;
 
   const icon_button({
     super.key,
@@ -17,46 +18,58 @@ class icon_button extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.bdwidth,
+    required this.linkedScreen,
   });
 
   @override
   Widget build(BuildContext context) {
     // 버튼 색상 및 테두리
-    return Container(
-      width: 90.0,
-      height: 55.0,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
-        // 테두리
-        border: Border.all(
-          color: bdColor,
-          width: bdwidth,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // 아이콘
-            Icon(
-              icon,
-              size: 40.0,
-              color: iconColor,
+    return GestureDetector(
+        // 클릭에 반응
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              // 해당 화면으로 이동
+              builder: (context) => linkedScreen,
             ),
-            // 텍스트
-            Text(
-              text,
-              style: TextStyle(
-                color: txtColor,
-                fontSize: 20.0,
-                fontFamily: 'KBOGothic',
-              ),
+          );
+        },
+        child: Container(
+          width: 90.0,
+          height: 55.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25.0),
+            // 테두리
+            border: Border.all(
+              color: bdColor,
+              width: bdwidth,
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // 아이콘
+                Icon(
+                  icon,
+                  size: 40.0,
+                  color: iconColor,
+                ),
+                // 텍스트
+                Text(
+                  text,
+                  style: TextStyle(
+                    color: txtColor,
+                    fontSize: 20.0,
+                    fontFamily: 'KBOGothic',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
 

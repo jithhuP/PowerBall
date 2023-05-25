@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/alert_screen.dart';
 import 'package:practice/custom_widget.dart';
+import 'package:practice/report_screen.dart';
 import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
@@ -285,6 +286,7 @@ class App extends State<MyApp> {
                       text: '기사',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
+                      linkedScreen: const ReportScreen(),
                     ),
                     // 버튼 : 로또
                     icon_button(
@@ -294,6 +296,7 @@ class App extends State<MyApp> {
                       text: '로또',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
+                      linkedScreen: const ReportScreen(),
                     ),
                     // 버튼 : 분석
                     icon_button(
@@ -303,6 +306,7 @@ class App extends State<MyApp> {
                       text: '분석',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
+                      linkedScreen: const ReportScreen(),
                     ),
                     // 버튼 : 행운
                     icon_button(
@@ -312,6 +316,7 @@ class App extends State<MyApp> {
                       text: '행운',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
+                      linkedScreen: const ReportScreen(),
                     ),
                   ],
                 ),
