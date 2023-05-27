@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // 최하단 메뉴 4개 버튼 Class
 class icon_button extends StatelessWidget {
@@ -206,6 +207,42 @@ class LottoBall extends StatelessWidget {
           fontSize: 35.0,
           fontFamily: 'Jersey',
           color: numColor,
+        ),
+      ),
+    );
+  }
+}
+
+class LinkArticle extends StatelessWidget {
+  const LinkArticle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => launchUrl(
+        Uri.parse('https://www.lotto.co.kr/article/list/AC01'),
+      ),
+      child: Container(
+        alignment: Alignment.centerLeft,
+        width: double.infinity,
+        height: 75.0,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(width: 3.0),
+          ),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(5.0),
+          child: Text(
+            "기사1 제목",
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontFamily: 'KBOGothic',
+              fontSize: 20.0,
+            ),
+          ),
         ),
       ),
     );

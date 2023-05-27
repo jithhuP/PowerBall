@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/custom_widget.dart';
 import 'package:practice/main.dart';
 
 class ReportScreen extends StatelessWidget {
@@ -28,6 +29,11 @@ class ReportScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      body: Column(
+        children: [
+          for (int i = 0; i < 5; i++) const LinkArticle(),
+        ],
       ),
     );
   }
