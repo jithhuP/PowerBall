@@ -38,19 +38,20 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import firestore
 
+
 #서비스 계정 키 파일 경로
 cred = credentials.Certificate("C:/firebase/key.json")
-
-firebase_admin.initialize_app(cred)
-
+firebase_admin.initialize_app(cred, {
+  'projectId': 'powerball-2023',
+})
 firebase_database = firestore.client()
 
-# 파일로 만든 데이터 추가 
-with open('test.py', 'r') as file:
-    test = file.read()
-doc_ref = db.collection(u'texts').document(u'text')
+#파일 데이터 직접 넣기
+doc_ref = firebase_database.collection(u'users').document(u'user01')
 doc_ref.set({
-    u'content': test
+    u'level': 20,
+    u'money': 700,
+    u'job': "knight"
 })
 
 
