@@ -46,7 +46,7 @@ firebase_admin.initialize_app(cred, {
 })
 firebase_database = firestore.client()
 
-#파일 데이터 직접 넣기
+#크롤링 한 데이터 직접 넣기
 doc_ref = firebase_database.collection(u'users').document(u'user01')
 doc_ref.set({
     u'level': 20,
