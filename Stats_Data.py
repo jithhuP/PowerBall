@@ -41,7 +41,7 @@ def getWinningNumber(round_num: int):
     num = (soup.select('p > span', {'class': ''})[6].text)
     my_array[int(num)] += 1
 Current_number = 1069 #현재 로또 최근 회차 1069
-Search_number = 1001 #찾고자 하는 번호
+Search_number = 1 #찾고자 하는 번호
 
 #로또 통계 데이터 추출
 for i in range(Search_number, Current_number+1):
@@ -50,7 +50,7 @@ for i in range(Search_number, Current_number+1):
 
 #추출된 데이터를 DB에 저장
 
-doc_ref = firebase_database.collection(u'PowerBall_Stats_Data').document(u'1100')
+doc_ref = firebase_database.collection(u'PowerBall_Stats_Data').document(u'total')
 doc_ref.set({
     u'1': my_array[1],
     u'2': my_array[2],
