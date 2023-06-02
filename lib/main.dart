@@ -4,6 +4,8 @@ import 'package:practice/custom_widget.dart';
 import 'package:practice/report_screen.dart';
 import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:intl/intl.dart';
 
 // 일반 색상 및 다크모드 색상
@@ -29,7 +31,12 @@ class MyApp extends StatefulWidget {
   }
 }
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
