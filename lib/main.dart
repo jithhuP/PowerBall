@@ -7,6 +7,7 @@ import 'package:timer_builder/timer_builder.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:intl/intl.dart';
+import 'loading_data.dart';
 
 // 일반 색상 및 다크모드 색상
 List<Color> ftColor = [
@@ -71,6 +72,7 @@ class App extends State<MyApp> {
                   Switch(
                     value: isSwitched,
                     onChanged: (value) {
+                      getData();
                       setState(() {
                         value ? darkMode = 3 : darkMode = 0;
                         isSwitched = value;
