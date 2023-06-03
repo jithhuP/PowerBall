@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice/alert_screen.dart';
 import 'package:practice/custom_widget.dart';
-import 'package:practice/loading_data.dart';
 import 'package:practice/report_screen.dart';
 import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
@@ -72,7 +71,7 @@ class App extends State<MyApp> {
                   Switch(
                     value: isSwitched,
                     onChanged: (value) {
-                      getData(); // 추후 삭제
+                      // getDataNum(); // 추후 삭제
                       setState(() {
                         value ? darkMode = 3 : darkMode = 0;
                         isSwitched = value;
@@ -186,8 +185,8 @@ class App extends State<MyApp> {
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 // 번호 표시
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   // 로또 번호 출력 함수
                   child:
                       LoadingLottoNum(), /*Text(

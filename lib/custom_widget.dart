@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/loading_data.dart';
 import 'package:practice/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -182,17 +183,30 @@ class LoadingLottoNum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        for (int i = 0; i < 7; i++) ...[
-          LottoBall(
-            numColor: ftColor[0 + darkMode],
-          ),
-          const SizedBox(
-            width: 4,
-          ),
-        ]
-      ],
+    return FutureBuilder(
+      future: getDataNum(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<dynamic>? data = snapshot.data;
+          return Row(
+            children: [
+              for (int i = 0; i < 7; i++) ...[
+                LottoBall(
+                  numColor: ftColor[0 + darkMode],
+                  num: data![i],
+                ),
+                const SizedBox(
+                  width: 4,
+                ),
+              ]
+            ],
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
@@ -200,10 +214,12 @@ class LoadingLottoNum extends StatelessWidget {
 // 로또 번호 출력 클래스
 class LottoBall extends StatelessWidget {
   final Color numColor;
+  final String num;
 
   const LottoBall({
     super.key,
     required this.numColor,
+    required this.num,
   });
 
   @override
@@ -224,7 +240,7 @@ class LottoBall extends StatelessWidget {
       ),
       // 텍스트
       child: Text(
-        '10',
+        num,
         style: TextStyle(
           fontSize: 30.0,
           fontFamily: 'Jersey',
