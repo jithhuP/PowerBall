@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // 최하단 메뉴 4개 버튼 Class
@@ -175,6 +176,27 @@ class SettingText extends StatelessWidget {
   }
 }
 
+// 데이터 불러오기 및 LottoBall 에 적용
+class LoadingLottoNum extends StatelessWidget {
+  const LoadingLottoNum({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        for (int i = 0; i < 7; i++) ...[
+          LottoBall(
+            numColor: ftColor[0 + darkMode],
+          ),
+          const SizedBox(
+            width: 4,
+          ),
+        ]
+      ],
+    );
+  }
+}
+
 // 로또 번호 출력 클래스
 class LottoBall extends StatelessWidget {
   final Color numColor;
@@ -189,8 +211,8 @@ class LottoBall extends StatelessWidget {
     // 공 디자인 영역
     return Container(
       alignment: Alignment.center,
-      height: 60,
-      width: 60,
+      height: 50,
+      width: 50,
       // 색상
       decoration: BoxDecoration(
         color: Colors.blue,
@@ -204,7 +226,7 @@ class LottoBall extends StatelessWidget {
       child: Text(
         '10',
         style: TextStyle(
-          fontSize: 35.0,
+          fontSize: 30.0,
           fontFamily: 'Jersey',
           color: numColor,
         ),
