@@ -11,8 +11,8 @@ import 'package:intl/intl.dart';
 // 일반 색상 및 다크모드 색상
 List<Color> ftColor = [
   Colors.black,
-  const Color.fromARGB(255, 162, 255, 212),
-  const Color.fromARGB(255, 180, 250, 162),
+  Colors.white,
+  const Color.fromARGB(255, 221, 252, 213),
   Colors.amber,
   Colors.black,
   const Color.fromARGB(255, 34, 34, 34)
@@ -185,8 +185,8 @@ class App extends State<MyApp> {
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 // 번호 표시
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
                   // 로또 번호 출력 함수
                   child:
                       LoadingLottoNum(), /*Text(

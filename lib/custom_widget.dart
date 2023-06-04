@@ -183,6 +183,15 @@ class LoadingLottoNum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Color> ballColor = [
+      Colors.blue,
+      Colors.red,
+      Colors.yellow,
+      Colors.green,
+      Colors.white,
+      Colors.deepOrange,
+      Colors.lime
+    ];
     return FutureBuilder(
       future: getDataNum(),
       builder: (context, snapshot) {
@@ -194,9 +203,10 @@ class LoadingLottoNum extends StatelessWidget {
                 LottoBall(
                   numColor: ftColor[0 + darkMode],
                   num: data![i],
+                  ballColor: ballColor[i],
                 ),
                 const SizedBox(
-                  width: 4,
+                  width: 5,
                 ),
               ]
             ],
@@ -215,11 +225,13 @@ class LoadingLottoNum extends StatelessWidget {
 class LottoBall extends StatelessWidget {
   final Color numColor;
   final String num;
+  final Color ballColor;
 
   const LottoBall({
     super.key,
     required this.numColor,
     required this.num,
+    required this.ballColor,
   });
 
   @override
@@ -227,14 +239,21 @@ class LottoBall extends StatelessWidget {
     // 공 디자인 영역
     return Container(
       alignment: Alignment.center,
-      height: 50,
-      width: 50,
+      height: 49,
+      width: 49,
       // 색상
       decoration: BoxDecoration(
-        color: Colors.blue,
+        boxShadow: const [
+          BoxShadow(
+            spreadRadius: 2,
+            blurRadius: 1,
+            blurStyle: BlurStyle.inner,
+          ),
+        ],
+        color: ballColor,
         borderRadius: BorderRadius.circular(30.0),
         border: Border.all(
-          color: Colors.blue,
+          color: ballColor,
           width: 5.0,
         ),
       ),
