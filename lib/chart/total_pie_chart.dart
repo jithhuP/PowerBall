@@ -1,6 +1,6 @@
-import 'package:open_source_project/resource/app_resource.dart';
+import '../resource/app_resource.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:open_source_project/widget/indicator.dart';
+import '../widget/indicator.dart';
 import 'package:flutter/material.dart';
 
 class PieChartSample2 extends StatefulWidget {
@@ -91,7 +91,7 @@ class PieChart2State extends State {
                 color: AppColors.contentColorOrange,
                 text: '21~25',
                 isSquare: true,
-            ),
+              ),
               SizedBox(
                 height: 4,
               ),
@@ -114,8 +114,7 @@ class PieChart2State extends State {
               Indicator(
                   color: AppColors.contentColorBlack,
                   text: '36~40',
-                  isSquare: true
-              ),
+                  isSquare: true),
               SizedBox(
                 height: 4,
               ),
