@@ -1,40 +1,21 @@
 import requests
 from bs4 import BeautifulSoup
 
-# 보안뉴스 사이트내 기사 제목 추출 구간이다.
-url = 'https://www.boannews.com/media/o_list.asp'
+url = 'https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=103/'
 response = requests.get(url)
 html = response.text
 soup = BeautifulSoup(html, 'html.parser')
-value = soup.find_all('span', class_='news_txt')
 
-count = 1
-titlelist = []
+articles = soup.find_all('a', class_='nclicks(cls_eco.clsart)')
 
-for item in value:  # 기사 제목만 추출하는 구간이다.
-    title = item.get_text()
-    print(count, end=". ")
-    print(title)
-    titlelist.append(title)  # 기사 제목을 추출해 따로 저장해두는 구간이다.
-    count += 1
+for article in articles:
+    title = article.get_text()
+    link = article['href']
 
-# 관심 기사를 선택하는 구간이다.
-number = int(input("관심 기사의 번호를 입력하세요: "))
-searchvalue = titlelist[number - 1]  # 관심 기사를, 제목을 저장해둔 곳에서 가져오는 구간이다.
-
-# 선택한 기사를 크롤링하는 구간이다.
-searchvalue_encoded = requests.utils.quote(searchvalue)  # 검색어 인코딩
-search_url = f'https://www.boannews.com/search/news_total.asp?search=title&find={searchvalue_encoded}'
-response2 = requests.get(search_url)
-html2 = response2.text
-soup2 = BeautifulSoup(html2, 'html.parser')
-value3 = soup2.find('div', class_='news_content')
-
-if value3:
-    article_content = value3.get_text()
-    print('\n기사 내용:\n', article_content)
-else:
-    print('\n해당 기사를 찾을 수 없습니다.')
+    if '로또' in title:
+        print('제목:', title)
+        print('링크:', link)
+        print()
 
 
 
