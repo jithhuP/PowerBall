@@ -16,5 +16,7 @@ getLottoData() async {
       .doc('total');
 
   var dataResult = await firestore.get();
-  var dataNum;
+  var dataNum = dataResult.data()?.entries.toList();
+
+  return dataNum;
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:practice/alert_screen.dart';
 import 'package:practice/chart/main_Bar_chart.dart';
 import 'package:practice/custom_widget.dart';
-import 'package:practice/loading_data.dart';
 import 'package:practice/report_screen.dart';
 import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
@@ -11,6 +10,7 @@ import 'firebase_options.dart';
 import 'package:intl/intl.dart';
 import 'chart/Pie_chart.dart';
 import 'chart/Bar_chart.dart';
+import 'lotto_screen.dart';
 
 // 일반 색상 및 다크모드 색상
 List<Color> ftColor = [
@@ -75,7 +75,6 @@ class App extends State<MyApp> {
                   Switch(
                     value: isSwitched,
                     onChanged: (value) {
-                      getLottoData();
                       // getDataNum(); // 추후 삭제
                       setState(() {
                         value ? darkMode = 3 : darkMode = 0;
@@ -274,7 +273,7 @@ class App extends State<MyApp> {
                               width: 4.0,
                             ),
                           ),
-                          child: main_Bar_chart(),
+                          child: const main_Bar_chart(),
                         ),
                       ],
                     ),
@@ -309,7 +308,7 @@ class App extends State<MyApp> {
                       text: '로또',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
-                      linkedScreen: const ReportScreen(),
+                      linkedScreen: const LottoScreen(),
                     ),
                     // 버튼 : 분석
                     icon_button(
