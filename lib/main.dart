@@ -11,6 +11,20 @@ import 'firebase_options.dart';
 import 'package:intl/intl.dart';
 import 'chart/Pie_chart.dart';
 import 'chart/Bar_chart.dart';
+import 'webview_example.dart';
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter WebView Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: WebViewExample(),
+    );
+  }
+}
 
 // 일반 색상 및 다크모드 색상
 List<Color> ftColor = [
