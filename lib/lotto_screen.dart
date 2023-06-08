@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice/main.dart';
+import 'custom_widget.dart';
 
 class LottoScreen extends StatelessWidget {
   const LottoScreen({super.key});
@@ -29,7 +30,11 @@ class LottoScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: const Column(),
+      body: const Column(
+        children: [
+          RecommendLotto(),
+        ],
+      ),
     );
   }
 }

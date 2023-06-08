@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practice/loading_data.dart';
 import 'package:practice/main.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:math';
 
 // 최하단 메뉴 4개 버튼 Class
 class icon_button extends StatelessWidget {
@@ -173,6 +174,46 @@ class SettingText extends StatelessWidget {
         color: fontcolor,
         fontFamily: 'KBOGothic',
       ),
+    );
+  }
+}
+
+class RecommendLotto extends StatelessWidget {
+  const RecommendLotto({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Color> ballColor = [
+      Colors.blue,
+      Colors.red,
+      Colors.yellow,
+      Colors.green,
+      Colors.white,
+      Colors.deepOrange,
+      Colors.lime
+    ];
+    return FutureBuilder(
+      future: getLottoData(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<String> data = extractNum(snapshot.data);
+          return Row(
+            children: [
+              for (int i = 0; i < 7; i++) ...[
+                LottoBall(
+                  numColor: ftColor[0 + darkMode],
+                  num: data[Random().nextInt(data.length)],
+                  ballColor: ballColor[i],
+                )
+              ],
+            ],
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
