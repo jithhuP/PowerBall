@@ -1,36 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=103/'
-response = requests.get(url)
-html = response.text
-soup = BeautifulSoup(html, 'html.parser')
+news_url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query={}'
 
-articles = soup.find_all('a', class_='nclicks(cls_eco.clsart)')
+query = input('검색 키워드 입력: ')
+query = query.replace(' ', '+')
 
-for article in articles:
-    title = article.get_text()
-    link = article['href']
-
-    if '로또' in title:
-        print('제목:', title)
-        print('링크:', link)
-        print()
-
-
-
-
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
-from firebase_admin import firestore
-
-#서비스 계정 키 파일 경로
-cred = credentials.Certificate("C:/firebase/key.json")
-firebase_admin.initialize_app(cred, {
-  'projectId': 'powerball-2023',
-})
-firebase_database = firestore.client()
+req = requests.get(news_url.format((query)))
+print("URL : ", news_url.format((query)))
+print(req.text)
 
 #크롤링 한 데이터 직접 넣기
 #doc_ref = firebase_database.collection(u'users').document(u'user01')
