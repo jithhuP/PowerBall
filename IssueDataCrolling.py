@@ -1,24 +1,41 @@
-import requests # HTTP 요청처리를 위해 사용하는 모듈이다. 
-from bs4 import BeautifulSoup # HTML 및 XML 파일에서 원하는 데이터를 손쉽게 Parsing 할 수 있는 Python 라이브러리다.  
+import requests
+from bs4 import BeautifulSoup
 
-# # 보안뉴스 사이트내 기사 제목 추출 구간이다. # 
-url = 'https://www.boannews.com/media/o_list.asp' # 크롤링할 주소를 입력하는 구간이다. 
-response = requests.get(url) # HTTP 요청처리를 GET방식으로 response라는 변수한테 주는 구간이다. 
-html = response.text # 응답을 읽고 텍스트를 반환하는 구간이다. 
-soup = BeautifulSoup(html, 'html.parser') # 해당 값을 parser하는 구간이다. 
-value = soup.find_all('span',class_="news_txt") # 특정 값을 추출하는 구간이다. 
-count = 1 
-titlelist = [] 
-for _ in value: # 기사 제목만 추출 하는 구간이다. 
-    vlaue2 = _.get_text() 
-    print(count,end=". ") 
-    print(vlaue2,end="\n") 
-    titlelist.append(vlaue2) # 기사 제목을 추출해 따로 저장해두는 구간이다. 
-    count += 1 
-    
-# 관심 기사를 선택 하는 구간이다 # 
-number = int(input("관심 기사의 번호를 입력하세요 : ")) 
-searchvalue = titlelist[number-1] # 관심 기사를, 제목을 저장해둔 곳에서 가져오는 구간이다.
+# 보안뉴스 사이트내 기사 제목 추출 구간이다.
+url = 'https://www.boannews.com/media/o_list.asp'
+response = requests.get(url)
+html = response.text
+soup = BeautifulSoup(html, 'html.parser')
+value = soup.find_all('span', class_='news_txt')
+
+count = 1
+titlelist = []
+
+for item in value:  # 기사 제목만 추출하는 구간이다.
+    title = item.get_text()
+    print(count, end=". ")
+    print(title)
+    titlelist.append(title)  # 기사 제목을 추출해 따로 저장해두는 구간이다.
+    count += 1
+
+# 관심 기사를 선택하는 구간이다.
+number = int(input("관심 기사의 번호를 입력하세요: "))
+searchvalue = titlelist[number - 1]  # 관심 기사를, 제목을 저장해둔 곳에서 가져오는 구간이다.
+
+# 선택한 기사를 크롤링하는 구간이다.
+searchvalue_encoded = requests.utils.quote(searchvalue)  # 검색어 인코딩
+search_url = f'https://www.boannews.com/search/news_total.asp?search=title&find={searchvalue_encoded}'
+response2 = requests.get(search_url)
+html2 = response2.text
+soup2 = BeautifulSoup(html2, 'html.parser')
+value3 = soup2.find('div', class_='news_content')
+
+if value3:
+    article_content = value3.get_text()
+    print('\n기사 내용:\n', article_content)
+else:
+    print('\n해당 기사를 찾을 수 없습니다.')
+
 
 
 
