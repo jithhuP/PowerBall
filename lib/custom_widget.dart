@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:practice/loading_data.dart';
 import 'package:practice/main.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:math';
 
 // 최하단 메뉴 4개 버튼 Class
 class icon_button extends StatelessWidget {
@@ -197,12 +196,13 @@ class RecommendLotto extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<String> data = extractNum(snapshot.data);
+          Set<int> num = combNum(data);
           return Row(
             children: [
               for (int i = 0; i < 7; i++) ...[
                 LottoBall(
                   numColor: ftColor[0 + darkMode],
-                  num: data[Random().nextInt(data.length)],
+                  num: data[num.elementAt(i)],
                   ballColor: ballColor[i],
                 )
               ],

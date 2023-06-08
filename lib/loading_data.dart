@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:math';
 
 Future<List<dynamic>> getDataNum() async {
   final firestore =
@@ -48,4 +49,12 @@ bool judgeNum(List<String> num, String key) {
     }
   }
   return !flag;
+}
+
+Set<int> combNum(List<String> data) {
+  Set<int> num = {};
+  while (num.length != 7) {
+    num.add(Random().nextInt(data.length));
+  }
+  return num;
 }
