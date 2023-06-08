@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:practice/alert_screen.dart';
-import 'package:practice/chart/main_Bar_chart.dart';
 import 'package:practice/custom_widget.dart';
 import 'package:practice/report_screen.dart';
 import 'package:practice/setting_screen.dart';
@@ -256,7 +255,6 @@ class App extends State<MyApp> {
                         Container(
                           width: 195.0,
                           height: 200.0,
-                          child:main_Bar_chart(),
                           // 영역 색상
                           decoration: BoxDecoration(
                             color: ftColor[2 + darkMode],
@@ -310,7 +308,7 @@ class App extends State<MyApp> {
                       text: '분석',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
-                      linkedScreen: const Chart(),
+                      linkedScreen: const ReportScreen(),
                     ),
                     // 버튼 : 행운
                     icon_button(
@@ -369,8 +367,7 @@ class _ChartPageState extends State<Chart> {
           children: [
             UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/images/account.png')
+                backgroundImage: AssetImage('/images/account.png')
               ),
                 accountName: Text('User'),
                 accountEmail: Text('user123@abc.com'),
@@ -387,53 +384,15 @@ class _ChartPageState extends State<Chart> {
               iconColor: Colors.black,
               focusColor: Colors.black,
               title: Text('홈'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context)=>MyApp())
-                );
-              },
+              onTap: () {},
               trailing: Icon(Icons.navigate_next),
             ),
             ListTile(
-              leading: Icon(Icons.description_outlined),
+              leading: Icon(Icons.self_improvement),
               iconColor: Colors.black,
               focusColor: Colors.black,
-              title: Text('기사'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>ReportScreen())
-                );
-              },
-              trailing: Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: Icon(Icons.onetwothree),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: Text('로또'),
-              onTap: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>ReportScreen())
-                    //report 스크린 대신 로또 화면 넣어주세요.
-                );
-              },
-              trailing: Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: Icon(Icons.diamond_outlined),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: Text('행운'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>ReportScreen())
-                    //reportscreen 대신 운세 화면 넣어주세요
-                );
-              },
+              title: Text('오늘의 운세'),
+              onTap: () {},
               trailing: Icon(Icons.navigate_next),
             ),
             ListTile(
@@ -441,12 +400,7 @@ class _ChartPageState extends State<Chart> {
               iconColor: Colors.black,
               focusColor: Colors.black,
               title: Text('설정'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>SettingScreen())
-                );
-              },
+              onTap: () {},
               trailing: Icon(Icons.navigate_next),
             )
           ],

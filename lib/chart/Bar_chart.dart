@@ -15,15 +15,39 @@ class _BarDefaultState extends State {
   @override
   void initState() {
     chartData = <ChartSampleData>[
-      ChartSampleData('1~5', 166, 100),
-      ChartSampleData('6~10', 55, 60),
-      ChartSampleData('11~15', 70, 76),
-      ChartSampleData('16~20', 102, 160),
-      ChartSampleData('21~25', 155, 164),
-      ChartSampleData('26~30', 143, 167),
-      ChartSampleData('31~35', 120, 149),
-      ChartSampleData('36~40', 119, 112),
-      ChartSampleData('41~45', 132, 123)
+      ChartSampleData(
+          '1~5',
+          166,
+          100,
+          50),
+      ChartSampleData(
+          '6~10',
+          55,
+          60,
+          65),
+      ChartSampleData(
+          '11~15',
+          70,
+          76,
+          75),
+      ChartSampleData(
+          '16~20',
+          102,
+          160,
+          145),
+      ChartSampleData(
+          '21~25',
+          155,
+          164,
+          145),
+      ChartSampleData(
+          '26~30',
+          143,
+          167,
+          146),
+      ChartSampleData('31~35', 120, 149, 130),
+      ChartSampleData('36~40', 119, 112, 114),
+      ChartSampleData('41~45', 132, 123, 111)
     ];
     super.initState();
   }
@@ -71,8 +95,9 @@ class _BarDefaultState extends State {
   }
 }
 class ChartSampleData {
-  ChartSampleData(this.x, this.y, this.secondSeriesYValue);
+  ChartSampleData(this.x, this.y, this.secondSeriesYValue, this.thirdSeriesYValue );
   final String x;
   final int y;
   final int secondSeriesYValue;
+  final int thirdSeriesYValue;
 }
