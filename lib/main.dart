@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/alert_screen.dart';
 import 'package:practice/custom_widget.dart';
+import 'package:practice/loading_data.dart';
 import 'package:practice/report_screen.dart';
 import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
@@ -71,6 +72,7 @@ class App extends State<MyApp> {
                   Switch(
                     value: isSwitched,
                     onChanged: (value) {
+                      getLottoData();
                       // getDataNum(); // 추후 삭제
                       setState(() {
                         value ? darkMode = 3 : darkMode = 0;

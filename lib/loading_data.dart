@@ -9,3 +9,12 @@ Future<List<dynamic>> getDataNum() async {
 
   return dataNum;
 }
+
+getLottoData() async {
+  final firestore = FirebaseFirestore.instance
+      .collection('PowerBall_Stats_Data')
+      .doc('total');
+
+  var dataResult = await firestore.get();
+  var dataNum;
+}
