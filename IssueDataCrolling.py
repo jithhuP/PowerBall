@@ -26,12 +26,12 @@ print("검색 결과".format((query)))
 
 a_list = soup.find_all('a', {'class': 'news_tit'})
 
-count = 1
+count = 11
 
 for a in a_list :
     print("제목 : ", a.get('title'))
     print("링크 : ", a.get('href'))
-    doc_ref = firebase_database.collection(u'PowerBall_num').document(u'%d' % count)
+    doc_ref = firebase_database.collection(u'PowerBall_news').document(u'%d' % count)
     count += 1
     doc_ref.set({
      u'제목': a.get('title'),
