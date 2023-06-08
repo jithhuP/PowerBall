@@ -1,12 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-    # 웹 페이지에서 HTML 코드 가져오기
-def getWinningNumber(round_num: int):
-    url = f"https://www.dhlottery.co.kr/happy.do?method=fundPressPrView&txtNo={round_num}"
-    html = requests.get(url).text
-
-
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -19,13 +13,41 @@ firebase_admin.initialize_app(cred, {
 })
 firebase_database = firestore.client()
 
-#크롤링 한 데이터 직접 넣기
-doc_ref = firebase_database.collection(u'users').document(u'user01')
-doc_ref.set({
-    u'level': 20,
-    u'money': 700,
-    u'job': "knight"
+news_url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query={}'
+query = input('검색할 키워드 입력 : ')
+query = query.replace(' ', '+')
+
+req = requests.get(news_url.format((query)))
+print("URL : ", news_url.format((query)))
+#print(req.text)
+
+soup = BeautifulSoup(req.text, 'html.parser')
+print("검색 결과".format((query)))
+
+a_list = soup.find_all('a', {'class': 'news_tit'})
+
+count = 11
+
+for a in a_list :
+    print("제목 : ", a.get('title'))
+    print("링크 : ", a.get('href'))
+    doc_ref = firebase_database.collection(u'PowerBall_news').document(u'%d' % count)
+    count += 1
+    doc_ref.set({
+     u'제목': a.get('title'),
+     u'링크': a.get('href')
 })
+
+    
+
+
+#크롤링 한 데이터 직접 넣기
+#doc_ref = firebase_database.collection(u'users').document(u'user01')
+#doc_ref.set({
+#    u'level': 20,
+#    u'money': 700,
+#    u'job': "knight"
+#})
 
 #내림차순 정렬
 #firebase 링크
