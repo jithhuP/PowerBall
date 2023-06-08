@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:practice/loading_data.dart';
+import 'package:practice/main.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // 최하단 메뉴 4개 버튼 Class
 class icon_button extends StatelessWidget {
@@ -174,13 +177,61 @@ class SettingText extends StatelessWidget {
   }
 }
 
+// 데이터 불러오기 및 LottoBall 에 적용
+class LoadingLottoNum extends StatelessWidget {
+  const LoadingLottoNum({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Color> ballColor = [
+      Colors.blue,
+      Colors.red,
+      Colors.yellow,
+      Colors.green,
+      Colors.white,
+      Colors.deepOrange,
+      Colors.lime
+    ];
+    return FutureBuilder(
+      future: getDataNum(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<dynamic>? data = snapshot.data;
+          return Row(
+            children: [
+              for (int i = 0; i < 7; i++) ...[
+                LottoBall(
+                  numColor: ftColor[0 + darkMode],
+                  num: data![i],
+                  ballColor: ballColor[i],
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+              ]
+            ],
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+}
+
 // 로또 번호 출력 클래스
 class LottoBall extends StatelessWidget {
   final Color numColor;
+  final String num;
+  final Color ballColor;
 
   const LottoBall({
     super.key,
     required this.numColor,
+    required this.num,
+    required this.ballColor,
   });
 
   @override
@@ -188,24 +239,67 @@ class LottoBall extends StatelessWidget {
     // 공 디자인 영역
     return Container(
       alignment: Alignment.center,
-      height: 60,
-      width: 60,
+      height: 49,
+      width: 49,
       // 색상
       decoration: BoxDecoration(
-        color: Colors.blue,
+        boxShadow: const [
+          BoxShadow(
+            spreadRadius: 2,
+            blurRadius: 1,
+            blurStyle: BlurStyle.inner,
+          ),
+        ],
+        color: ballColor,
         borderRadius: BorderRadius.circular(30.0),
         border: Border.all(
-          color: Colors.blue,
+          color: ballColor,
           width: 5.0,
         ),
       ),
       // 텍스트
       child: Text(
-        '10',
+        num,
         style: TextStyle(
-          fontSize: 35.0,
+          fontSize: 30.0,
           fontFamily: 'Jersey',
           color: numColor,
+        ),
+      ),
+    );
+  }
+}
+
+class LinkArticle extends StatelessWidget {
+  const LinkArticle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => launchUrl(
+        Uri.parse('https://www.lotto.co.kr/article/list/AC01'),
+      ),
+      child: Container(
+        alignment: Alignment.centerLeft,
+        width: double.infinity,
+        height: 75.0,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(width: 3.0),
+          ),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(5.0),
+          child: Text(
+            "기사1 제목",
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontFamily: 'KBOGothic',
+              fontSize: 20.0,
+            ),
+          ),
         ),
       ),
     );
