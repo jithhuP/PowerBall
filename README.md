@@ -1,16 +1,9 @@
-# practice
+# 설치 방법 
+(추가)+APK 파일로 만들고 파일을 설치할 수 있게 해준다.
 
-A new Flutter project.
+앱을 직접적으로 돌리고 싶을 경우 아래 방법을 통해 해결이 가능하다.
 
-## Getting Started
+[Flutter SDK](https://docs.flutter.dev/get-started/install/windows) 파일을 다운 받는다. 
 
-This project is a starting point for a Flutter application.
+[Visual Studio](https://code.visualstudio.com/Download)혹은 [Android Studio](https://developer.android.com/studio)를 다운받아 프로그램을 실행할 수 있다.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
