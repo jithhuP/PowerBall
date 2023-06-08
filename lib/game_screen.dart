@@ -14,3 +14,16 @@ class _WebViewExampleState extends State<WebViewExample> {
     WebView.platform = SurfaceAndroidWebView(); // 안드로이드에서 사용하기 위한 설정
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('WebView Example'),
+      ),
+      body: WebView(
+        initialUrl: 'https://jhlov.github.io/baseball/', // 연결할 웹 페이지 URL
+        javascriptMode: JavascriptMode.unrestricted, // 웹 페이지의 JavaScript 허용
+      ),
+    );
+  }
+}
