@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class Bar_chart extends StatefulWidget {
-  const Bar_chart({super.key});
+class main_Bar_chart extends StatefulWidget {
+  const main_Bar_chart({super.key});
   @override
   State<StatefulWidget> createState() => _BarDefaultState();
 }
@@ -37,7 +37,7 @@ class _BarDefaultState extends State {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
       title: ChartTitle(text:'50 횟수와 총 횟수 빈도 비교'),
-      legend: Legend(isVisible:true ),
+      legend: Legend(isVisible:false ),
       primaryXAxis: CategoryAxis(
         majorGridLines: const MajorGridLines(width: 0),
       ),
