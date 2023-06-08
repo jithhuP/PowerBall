@@ -1,0 +1,484 @@
+import 'package:flutter/material.dart';
+import 'package:practice/alert_screen.dart';
+import 'package:practice/chart/main_Bar_chart.dart';
+import 'package:practice/custom_widget.dart';
+import 'package:practice/loading_data.dart';
+import 'package:practice/report_screen.dart';
+import 'package:practice/setting_screen.dart';
+import 'package:timer_builder/timer_builder.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:intl/intl.dart';
+import 'chart/Pie_chart.dart';
+import 'chart/Bar_chart.dart';
+
+// 일반 색상 및 다크모드 색상
+List<Color> ftColor = [
+  Colors.black,
+  Colors.white,
+  const Color.fromARGB(255, 221, 252, 213),
+  Colors.amber,
+  Colors.black,
+  const Color.fromARGB(255, 34, 34, 34)
+];
+
+// 다크모드 계수
+int darkMode = 0;
+bool isSwitched = false;
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return App();
+  }
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const MyApp());
+}
+
+class App extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: ftColor[1 + darkMode],
+        // 좌우 빈 공간을 넣음
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 2.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 최상단 빈공간 넣음
+              const SizedBox(
+                height: 20.0,
+              ),
+              // 다크모드 스위치 영역
+              Row(
+                children: [
+                  // 다크모드 스위치 아이콘
+                  Icon(
+                    Icons.dark_mode,
+                    size: 35.0,
+                    color: ftColor[0 + darkMode],
+                  ),
+                  // 다크모드 스위치
+                  Switch(
+                    value: isSwitched,
+                    onChanged: (value) {
+                      getLottoData();
+                      // getDataNum(); // 추후 삭제
+                      setState(() {
+                        value ? darkMode = 3 : darkMode = 0;
+                        isSwitched = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // 빈 공간 넣기
+                      const SizedBox(
+                        width: 20.0,
+                      ),
+                      // 시계 영역
+                      TimerBuilder.periodic(
+                        const Duration(seconds: 1),
+                        builder: (context) {
+                          return Text(
+                            // 시, 분으로 표시
+                            DateFormat('HH:mm').format(DateTime.now()),
+                            style: TextStyle(
+                              color: ftColor[0 + darkMode],
+                              fontFamily: 'JetBrainsMono',
+                              fontSize: 45.0,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      //알림 영역
+                      ActionButton(
+                        iconcolor: ftColor[0 + darkMode],
+                        iCon: Icons.add_alert_rounded,
+                        iconsize: 40.0,
+                        // 알림 화면으로 연결
+                        linkedScreen: const AlertScreen(),
+                      ),
+                      //메뉴 영역
+                      ActionButton(
+                        iconcolor: ftColor[0 + darkMode],
+                        iCon: Icons.menu,
+                        iconsize: 40.0,
+                        // 메뉴(설정) 화면으로 연결
+                        linkedScreen: const SettingScreen(),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              Row(
+                // 최근 로또 번호
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '최근 로또 번호',
+                          style: TextStyle(
+                            color: ftColor[0 + darkMode],
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'KBOGothic',
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 205,
+                        ),
+                        // 더보기 영역
+                        Text(
+                          '> 더보기',
+                          style: TextStyle(
+                            fontFamily: 'KBOGothic',
+                            color: ftColor[0 + darkMode],
+                            fontSize: 18.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              // 빈 공간 넣기
+              const SizedBox(
+                height: 10.0,
+              ),
+              // 추천 번호 표시 영역
+              Container(
+                alignment: AlignmentDirectional.center,
+                height: 130,
+                // 색상 및 테두리
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: ftColor[0 + darkMode],
+                    width: 4.0,
+                  ),
+                  color: ftColor[2 + darkMode],
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+                // 번호 표시
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  // 로또 번호 출력 함수
+                  child:
+                      LoadingLottoNum(), /*Text(
+                    '1 - 2 - 3 - 4 - 5 - 6',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 45.0,
+                    ),
+                  ),*/
+                ),
+              ),
+              // 빈 공간 넣기
+              const SizedBox(
+                height: 40.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // 최근 추천 번호 텍스트
+                        Border_text(
+                          text: "최근 추천 번호",
+                          bdColor: ftColor[0 + darkMode],
+                          txtColor: ftColor[0 + darkMode],
+                          fontsize: 22.0,
+                          bdheight: 55.0,
+                          pdsize: 8.5,
+                        ),
+                        // 빈공간 넣기
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        // 통계 : 최근 추천 번호
+                        Container(
+                          width: 195.0,
+                          height: 200.0,
+                          // 영역 색상
+                          decoration: BoxDecoration(
+                            color: ftColor[2 + darkMode],
+                            borderRadius: BorderRadius.circular(25.0),
+                            border: Border.all(
+                              color: ftColor[0 + darkMode],
+                              width: 4.0,
+                            ),
+                          ),
+                          // child: ,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // 로또 번호 분석 텍스트
+                        Border_text(
+                          text: "로또 번호 분석",
+                          bdColor: ftColor[0 + darkMode],
+                          txtColor: ftColor[0 + darkMode],
+                          fontsize: 22.0,
+                          bdheight: 55.0,
+                          pdsize: 12.5,
+                        ),
+                        // 빈 공간 넣기
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        // 통계 : 로또 번호 분석
+                        Container(
+                          width: 195.0,
+                          height: 200.0,
+                          // 영역 색상
+                          decoration: BoxDecoration(
+                            color: ftColor[2 + darkMode],
+                            borderRadius: BorderRadius.circular(25.0),
+                            border: Border.all(
+                              color: ftColor[0 + darkMode],
+                              width: 4.0,
+                            ),
+                          ),
+                          child: main_Bar_chart(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              // 빈 공간 넣기
+              const SizedBox(
+                height: 35.0,
+              ),
+              // 최하단 버튼 영역
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // 버튼 : 기사
+                    icon_button(
+                      icon: Icons.description_outlined,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
+                      text: '기사',
+                      bdColor: ftColor[0 + darkMode],
+                      bdwidth: 2.5,
+                      linkedScreen: const ReportScreen(),
+                    ),
+                    // 버튼 : 로또
+                    icon_button(
+                      icon: Icons.onetwothree,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
+                      text: '로또',
+                      bdColor: ftColor[0 + darkMode],
+                      bdwidth: 2.5,
+                      linkedScreen: const ReportScreen(),
+                    ),
+                    // 버튼 : 분석
+                    icon_button(
+                      icon: Icons.add_chart_sharp,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
+                      text: '분석',
+                      bdColor: ftColor[0 + darkMode],
+                      bdwidth: 2.5,
+                      linkedScreen: const Chart(),
+                    ),
+                    // 버튼 : 행운
+                    icon_button(
+                      icon: Icons.diamond_outlined,
+                      txtColor: ftColor[0 + darkMode],
+                      iconColor: ftColor[0 + darkMode],
+                      text: '행운',
+                      bdColor: ftColor[0 + darkMode],
+                      bdwidth: 2.5,
+                      linkedScreen: const ReportScreen(),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Chart extends StatefulWidget {
+  const Chart({Key? key}) : super(key: key);
+
+  @override
+  State<Chart> createState() => _ChartPageState();
+}
+
+class _ChartPageState extends State<Chart> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _wigetOptions = <Widget>[
+    const Pie_chart(),
+    const Bar_chart(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text('Chart'),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage('assets/images/account.png')),
+              accountName: const Text('User'),
+              accountEmail: const Text('user123@abc.com'),
+              decoration: BoxDecoration(
+                color: Colors.red[200],
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              title: const Text('홈'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MyApp()));
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              leading: const Icon(Icons.description_outlined),
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              title: const Text('기사'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MyApp()));
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              leading: const Icon(Icons.onetwothree),
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              title: const Text('로또'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReportScreen()));
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              leading: const Icon(Icons.diamond_outlined),
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              title: const Text('행운'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReportScreen()));
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              title: const Text('설정'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingScreen()));
+              },
+              trailing: const Icon(Icons.navigate_next),
+            )
+          ],
+        ),
+      ),
+      body: SafeArea(
+        child: _wigetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: '원형 그래프',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.arrow_forward), label: '막대 그래프'),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blueAccent,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+}
