@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:practice/chart/main_Bar_chart.dart';
 import 'package:practice/custom_widget.dart';
 import 'package:practice/report_screen.dart';
-import 'package:practice/setting_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -118,8 +117,8 @@ class App extends State<MyApp> {
                         iconcolor: ftColor[0 + darkMode],
                         iCon: Icons.menu,
                         iconsize: 40.0,
-                        // 메뉴(설정) 화면으로 연결
-                        linkedScreen: const SettingScreen(),
+                        // 메뉴 화면으로 연결
+                        linkedScreen: const UserInfo(),
                       )
                     ],
                   ),
@@ -353,87 +352,7 @@ class _ChartPageState extends State<Chart> {
         centerTitle: true,
         elevation: 0,
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            UserAccountsDrawerHeader(
-              currentAccountPicture: const CircleAvatar(
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage('assets/images/account.png')),
-              accountName: const Text('User'),
-              accountEmail: const Text('user123@abc.com'),
-              decoration: BoxDecoration(
-                color: Colors.red[200],
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: const Text('홈'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MyApp()));
-              },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: const Icon(Icons.description_outlined),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: const Text('기사'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MyApp()));
-              },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: const Icon(Icons.onetwothree),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: const Text('로또'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ReportScreen()));
-              },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: const Icon(Icons.diamond_outlined),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: const Text('행운'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ReportScreen()));
-              },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: const Text('설정'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SettingScreen()));
-              },
-              trailing: const Icon(Icons.navigate_next),
-            )
-          ],
-        ),
-      ),
+      drawer: const UserInfo(),
       body: SafeArea(
         child: _wigetOptions.elementAt(_selectedIndex),
       ),

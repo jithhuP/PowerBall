@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:practice/loading_data.dart';
 import 'package:practice/main.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'report_screen.dart';
+import 'setting_screen.dart';
 
 // 최하단 메뉴 4개 버튼 Class
 class icon_button extends StatelessWidget {
@@ -242,7 +244,7 @@ class LoadingLottoNum extends StatelessWidget {
             children: [
               for (int i = 0; i < 7; i++) ...[
                 LottoBall(
-                  numColor: ftColor[0 + darkMode],
+                  numColor: Colors.black,
                   num: data![i],
                   ballColor: ballColor[i],
                 ),
@@ -331,17 +333,109 @@ class LinkArticle extends StatelessWidget {
             bottom: BorderSide(width: 3.0),
           ),
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(5.0),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
           child: Text(
             "기사1 제목",
             textAlign: TextAlign.left,
             style: TextStyle(
+              color: ftColor[0 + darkMode],
               fontFamily: 'KBOGothic',
               fontSize: 20.0,
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class UserInfo extends StatelessWidget {
+  const UserInfo({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          UserAccountsDrawerHeader(
+            currentAccountPicture: const CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/images/account.png')),
+            accountName: const Text('User'),
+            accountEmail: const Text('user123@abc.com'),
+            decoration: BoxDecoration(
+              color: Colors.red[200],
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('홈'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyApp()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.description_outlined),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('기사'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyApp()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.onetwothree),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('로또'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ReportScreen()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.diamond_outlined),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('행운'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ReportScreen()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('설정'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingScreen()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          )
+        ],
       ),
     );
   }
