@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:practice/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class main_Bar_chart extends StatefulWidget {
@@ -36,8 +37,7 @@ class _BarDefaultState extends State {
   SfCartesianChart _buildDefaultBarChart() {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
-      title: ChartTitle(text:'50 횟수와 총 횟수 빈도 비교'),
-      legend: Legend(isVisible:false ),
+      legend: Legend(isVisible: false),
       primaryXAxis: CategoryAxis(
         majorGridLines: const MajorGridLines(width: 0),
       ),
@@ -52,13 +52,15 @@ class _BarDefaultState extends State {
   List<BarSeries<ChartSampleData, String>> _getDefaultBarSeries() {
     return <BarSeries<ChartSampleData, String>>[
       BarSeries<ChartSampleData, String>(
-          dataSource: chartData!,
-          xValueMapper: (ChartSampleData sales, _) => sales.x as String,
-          yValueMapper: (ChartSampleData sales, _) => sales.y,
-          name: '50 횟수'),
+        dataSource: chartData!,
+        xValueMapper: (ChartSampleData sales, _) => sales.x,
+        yValueMapper: (ChartSampleData sales, _) => sales.y,
+        name: '50 횟수',
+        color: ftColor[0 + darkMode],
+      ),
       BarSeries<ChartSampleData, String>(
           dataSource: chartData!,
-          xValueMapper: (ChartSampleData sales, _) => sales.x as String,
+          xValueMapper: (ChartSampleData sales, _) => sales.x,
           yValueMapper: (ChartSampleData sales, _) => sales.secondSeriesYValue,
           name: '총 횟수'),
     ];
@@ -70,6 +72,7 @@ class _BarDefaultState extends State {
     super.dispose();
   }
 }
+
 class ChartSampleData {
   ChartSampleData(this.x, this.y, this.secondSeriesYValue);
   final String x;

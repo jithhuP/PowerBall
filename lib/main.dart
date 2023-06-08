@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:practice/alert_screen.dart';
 import 'package:practice/chart/main_Bar_chart.dart';
 import 'package:practice/custom_widget.dart';
 import 'package:practice/report_screen.dart';
@@ -114,14 +113,6 @@ class App extends State<MyApp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      //알림 영역
-                      ActionButton(
-                        iconcolor: ftColor[0 + darkMode],
-                        iCon: Icons.add_alert_rounded,
-                        iconsize: 40.0,
-                        // 알림 화면으로 연결
-                        linkedScreen: const AlertScreen(),
-                      ),
                       //메뉴 영역
                       ActionButton(
                         iconcolor: ftColor[0 + darkMode],
