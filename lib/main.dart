@@ -148,15 +148,6 @@ class App extends State<MyApp> {
                         const SizedBox(
                           width: 205,
                         ),
-                        // 더보기 영역
-                        Text(
-                          '> 더보기',
-                          style: TextStyle(
-                            fontFamily: 'KBOGothic',
-                            color: ftColor[0 + darkMode],
-                            fontSize: 18.0,
-                          ),
-                        ),
                       ],
                     ),
                   ),
