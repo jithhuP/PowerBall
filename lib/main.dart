@@ -265,7 +265,6 @@ class App extends State<MyApp> {
                         Container(
                           width: 195.0,
                           height: 200.0,
-                          child: main_Bar_chart(),
                           // 영역 색상
                           decoration: BoxDecoration(
                             color: ftColor[2 + darkMode],
@@ -275,6 +274,7 @@ class App extends State<MyApp> {
                               width: 4.0,
                             ),
                           ),
+                          child: main_Bar_chart(),
                         ),
                       ],
                     ),
@@ -350,26 +350,25 @@ class Chart extends StatefulWidget {
 }
 
 class _ChartPageState extends State<Chart> {
-
   int _selectedIndex = 0;
 
   final List<Widget> _wigetOptions = <Widget>[
-    Pie_chart(),
-    Bar_chart(),
+    const Pie_chart(),
+    const Bar_chart(),
   ];
 
-  void _onItemTapped(int index){
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Colors.red,
-        title:Text('Chart'),
+        backgroundColor: Colors.red,
+        title: const Text('Chart'),
         centerTitle: true,
         elevation: 0,
       ),
@@ -377,84 +376,79 @@ class _ChartPageState extends State<Chart> {
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/images/account.png')
-              ),
-                accountName: Text('User'),
-                accountEmail: Text('user123@abc.com'),
+              currentAccountPicture: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage('assets/images/account.png')),
+              accountName: const Text('User'),
+              accountEmail: const Text('user123@abc.com'),
               decoration: BoxDecoration(
                 color: Colors.red[200],
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(10.0),
                   bottomRight: Radius.circular(10.0),
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: const Icon(Icons.home),
               iconColor: Colors.black,
               focusColor: Colors.black,
-              title: Text('홈'),
+              title: const Text('홈'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>MyApp())
-                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MyApp()));
               },
-              trailing: Icon(Icons.navigate_next),
+              trailing: const Icon(Icons.navigate_next),
             ),
             ListTile(
-              leading: Icon(Icons.description_outlined),
+              leading: const Icon(Icons.description_outlined),
               iconColor: Colors.black,
               focusColor: Colors.black,
-              title: Text('기사'),
-              onTap: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>MyApp())
-                );
-              },
-              trailing: Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: Icon(Icons.onetwothree),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: Text('로또'),
-              onTap: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context)=>ReportScreen())
-                );
-              },
-              trailing: Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              leading: Icon(Icons.diamond_outlined),
-              iconColor: Colors.black,
-              focusColor: Colors.black,
-              title: Text('행운'),
+              title: const Text('기사'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>ReportScreen())
-                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MyApp()));
               },
-              trailing: Icon(Icons.navigate_next),
+              trailing: const Icon(Icons.navigate_next),
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: const Icon(Icons.onetwothree),
               iconColor: Colors.black,
               focusColor: Colors.black,
-              title: Text('설정'),
+              title: const Text('로또'),
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context)=>SettingScreen())
-                );
+                    MaterialPageRoute(
+                        builder: (context) => const ReportScreen()));
               },
-              trailing: Icon(Icons.navigate_next),
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              leading: const Icon(Icons.diamond_outlined),
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              title: const Text('행운'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReportScreen()));
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              iconColor: Colors.black,
+              focusColor: Colors.black,
+              title: const Text('설정'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingScreen()));
+              },
+              trailing: const Icon(Icons.navigate_next),
             )
           ],
         ),
@@ -466,10 +460,10 @@ class _ChartPageState extends State<Chart> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_back),
-            label: '원형 그래프',),
+            label: '원형 그래프',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.arrow_forward),
-              label: '막대 그래프'),
+              icon: Icon(Icons.arrow_forward), label: '막대 그래프'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blueAccent,
@@ -477,12 +471,14 @@ class _ChartPageState extends State<Chart> {
       ),
     );
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
+
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
   }
 }
