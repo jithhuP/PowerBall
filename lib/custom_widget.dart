@@ -350,6 +350,56 @@ class LinkArticle extends StatelessWidget {
   }
 }
 
+class GoGame extends StatelessWidget {
+  const GoGame({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => launchUrl(
+        Uri.parse('https://jhlov.github.io/baseball/'),
+      ),
+      child: const Scaffold(
+        backgroundColor: Colors.white,
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "숫자 야구",
+                  style: TextStyle(
+                    fontFamily: "KBOGothic",
+                    fontSize: 75.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text(
+                  "게임 시작",
+                  style: TextStyle(
+                    fontFamily: "KBOGothic",
+                    fontSize: 50.0,
+                  ),
+                ),
+                Text(
+                  "하려면 한번 더 클릭",
+                  style: TextStyle(
+                    fontFamily: "KBOGothic",
+                    fontSize: 25.0,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class UserInfo extends StatelessWidget {
   const UserInfo({
     super.key,

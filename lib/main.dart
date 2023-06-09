@@ -276,7 +276,7 @@ class App extends State<MyApp> {
                       text: '행운',
                       bdColor: ftColor[0 + darkMode],
                       bdwidth: 2.5,
-                      linkedScreen: const ReportScreen(),
+                      linkedScreen: const GoGame(),
                     ),
                   ],
                 ),
