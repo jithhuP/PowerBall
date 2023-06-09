@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class main_Bar_chart extends StatefulWidget {
-  const main_Bar_chart({super.key});
+class total_Bar_chart extends StatefulWidget {
+  const total_Bar_chart({super.key});
   @override
   State<StatefulWidget> createState() => _BarDefaultState();
 }
@@ -36,7 +36,6 @@ class _BarDefaultState extends State {
   SfCartesianChart _buildDefaultBarChart() {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
-      title: ChartTitle(text:'총 횟수 평균'),
       legend: Legend(isVisible:false ),
       primaryXAxis: CategoryAxis(
         majorGridLines: const MajorGridLines(width: 0),
