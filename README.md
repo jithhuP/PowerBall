@@ -19,8 +19,7 @@
 
 [Visual Studio](https://code.visualstudio.com/Download)(링크)혹은 [Android Studio](https://developer.android.com/studio)(링크)를 다운 받아 Flutter SDK 파일을 실행시킬 수 있습니다.
 
-이외에도 추가적인 설치 파일이 존재합니다. 이 부분은 의존성에서 설명하겠습니다.
-
+그 외에도 데이터 크롤링을 위한 추가적인 설치 파일이 존재합니다. 아래 (데이터 크롤링을 위한 추가적인 설치)에서 내용을 포함하고 있습니다.
 
 # 의존성 (dependency)
 
@@ -41,7 +40,40 @@
 - VS Code (version - 1.75.1)
 - Android Studio (version - 2022.2.1)
 
-## 추가적인 환경 설정 설치 패키지
+## 데이터 크롤링을 위한 추가적인 설치
+
+추가적인 환경을 설정하기 위해서는 먼저 
+* VS Code(visual studio code)
+* Android Studio
+
+설치 후, 해당 프로그램에서 (PowerShell) or (터미널) 을 찾습니다.
+(PowerShell) or (터미널)에서 아래와 같이 원하는 패키지를 설치할 수 있습니다.
+
+* bs4 
+    ```c
+    pip install beautifulsoup4
+    /*(설명):
+    beautifulsoup4는 파이썬에서 HTML 및 XML 문서를 파싱하고 검색, 조작하기 위한 라이브러리입니다. HTML 또는 XML 형식의 문서에서 데이터를 추출하거나 원하는 요소를 탐색하는 등 다양한 웹 스크래핑 작업에 사용됩니다. 웹 페이지 크롤링이나 데이터 마이닝과 같은 작업에서 유용하게 활용될 수 있습니다.
+    */
+    ```
+
+* requests
+    ```c
+    pip install requests
+    /*(설명):
+    requests는 파이썬에서 HTTP 요청을 보내고 받는 데 사용되는 간편하고 인기 있는 라이브러리입니다. requests를 사용하면 웹 페이지에 GET, POST, PUT, DELETE 등의 HTTP 요청을 보내고, 응답을 받아오며, 쿠키, 세션 관리 등을 처리할 수 있습니다. HTTP 클라이언트를 구현하는 데 편리한 기능을 제공합니다.
+    */
+    ```
+
+* firebase
+    ```c
+    pip install firebase-admin
+    /*(설명):
+    firebase-admin은 파이썬에서 Firebase 백엔드 서비스와 상호 작용하기 위한 공식 Firebase Admin SDK입니다. Firebase의 다양한 기능에 접근하고 관리할 수 있는 API를 제공하여 사용자 관리, 데이터베이스 연동, 푸시 알림 등을 처리할 수 있습니다.
+    */
+    ```
+
+ 데이터 크롤링에서 bs4, requests 를 설치 후 원하는 데이터를 얻을 수 있으며, 데이터 관리를 위해 firebase를 사용할 수 잇습니다.
 
 
 # 연락처(Contact information)
@@ -50,7 +82,7 @@
 
 프로젝트 디자인 담당:
  * 박상현 (email - )
- * 조민기 (email - )
+ * 조민기 (email - jominki4637@gmail.com)
 
 # 라이선스 및 약관
  * [Github 이용 약관](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)
