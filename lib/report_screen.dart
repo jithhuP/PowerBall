@@ -30,10 +30,12 @@ class ReportScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          for (int i = 0; i < 5; i++) const LinkArticle(),
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            LoadingNews(),
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/chart/main_Bar_chart.dart';
 import 'package:practice/custom_widget.dart';
+import 'package:practice/loading_data.dart';
 import 'package:practice/report_screen.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -73,7 +74,7 @@ class App extends State<MyApp> {
                   Switch(
                     value: isSwitched,
                     onChanged: (value) {
-                      // getDataNum(); // 추후 삭제
+                      getNews();
                       setState(() {
                         value ? darkMode = 3 : darkMode = 0;
                         isSwitched = value;

@@ -58,3 +58,12 @@ Set<int> combNum(List<String> data) {
   }
   return num;
 }
+
+Future<List<Map<String, dynamic>>> getNews() async {
+  final firestore = FirebaseFirestore.instance.collection('PowerBall_news');
+
+  var dataResult = await firestore.get();
+  var dataNews = dataResult.docs.map((doc) => doc.data()).toList();
+
+  return dataNews;
+}

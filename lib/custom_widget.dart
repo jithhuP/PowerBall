@@ -201,13 +201,43 @@ class RecommendLotto extends StatelessWidget {
           Set<int> num = combNum(data);
           return Row(
             children: [
-              for (int i = 0; i < 7; i++) ...[
+              for (int i = 0; i < 7; i++) ...{
                 LottoBall(
                   numColor: ftColor[0 + darkMode],
                   num: data[num.elementAt(i)],
                   ballColor: ballColor[i],
                 )
-              ],
+              },
+            ],
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+}
+
+class LoadingNews extends StatelessWidget {
+  const LoadingNews({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: getNews(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<Map<String, dynamic>>? data = snapshot.data;
+          return Column(
+            children: [
+              for (var news in data!) ...{
+                LinkArticle(
+                  url: news.values.toList()[1],
+                  title: news.values.toList()[0],
+                ),
+              },
             ],
           );
         } else {
@@ -314,15 +344,20 @@ class LottoBall extends StatelessWidget {
 }
 
 class LinkArticle extends StatelessWidget {
+  final String url;
+  final String title;
+
   const LinkArticle({
     super.key,
+    required this.url,
+    required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => launchUrl(
-        Uri.parse('https://www.lotto.co.kr/article/list/AC01'),
+        Uri.parse(url),
       ),
       child: Container(
         alignment: Alignment.centerLeft,
@@ -336,7 +371,7 @@ class LinkArticle extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Text(
-            "기사1 제목",
+            title,
             textAlign: TextAlign.left,
             style: TextStyle(
               color: ftColor[0 + darkMode],
