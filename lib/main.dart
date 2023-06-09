@@ -229,9 +229,46 @@ class App extends State<MyApp> {
                   ],
                 ),
               ),
-              // 빈 공간 넣기
               const SizedBox(
-                height: 35.0,
+                height: 10.0,
+              ),
+              // 빈 공간 넣기
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 15.0,
+                    height: 15.0,
+                    color: Colors.blue,
+                  ),
+                  Text(
+                    ' : 최근 50회',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontFamily: 'KBOGothic',
+                      color: ftColor[0 + darkMode],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  Container(
+                    width: 15.0,
+                    height: 15.0,
+                    color: Colors.red,
+                  ),
+                  Text(
+                    ' : 총 횟수',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontFamily: 'KBOGothic',
+                      color: ftColor[0 + darkMode],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15.0,
               ),
               // 최하단 버튼 영역
               Padding(
