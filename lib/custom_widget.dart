@@ -199,18 +199,45 @@ class RecommendLotto extends StatelessWidget {
         if (snapshot.hasData) {
           List<String> data = extractNum(snapshot.data);
           Set<int> num = combNum(data);
-          return Card(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                for (int i = 0; i < 7; i++) ...{
-                  LottoBall(
-                    numColor: ftColor[0 + darkMode],
-                    num: data[num.elementAt(i)],
-                    ballColor: ballColor[i],
-                  )
-                },
-              ],
+          return SizedBox(
+            height: 95.0,
+            width: double.infinity,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color: ftColor[0 + darkMode],
+                  width: 2.0,
+                ),
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              color: ftColor[2 + darkMode],
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      '추천 1',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'KBOGothic',
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        for (int i = 0; i < 7; i++) ...{
+                          LottoBall(
+                            numColor: ftColor[0 + darkMode],
+                            num: data[num.elementAt(i)],
+                            ballColor: ballColor[i],
+                          )
+                        },
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           );
         } else {

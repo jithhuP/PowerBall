@@ -37,7 +37,13 @@ class LottoScreen extends StatelessWidget {
           ),
           Text(
             '이번 추천 번호는...',
-            style: TextStyle(fontSize: 35.0),
+            style: TextStyle(
+              fontSize: 35.0,
+              fontFamily: 'KBOGothic',
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
           ),
           RecommendLotto(),
         ],
