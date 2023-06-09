@@ -203,6 +203,7 @@ class RecommendLotto extends StatelessWidget {
             height: 95.0,
             width: double.infinity,
             child: Card(
+              elevation: 4.0,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   color: ftColor[0 + darkMode],
