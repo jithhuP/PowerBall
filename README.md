@@ -28,8 +28,11 @@
 
 로또 APP 개발 프로젝트 입니다. 로또 번호를 추첨할 수 있으며, 최근 내가 추첨한 번호, 로또 번호 통계 그래프, 로또 관련 기사, 게임 등 다양한 재미를 즐길 수 있습니다. 
 
-현재 프로그램 및 언어의 버전 정보는
 
+* 프로그램 구현 환경(OS)
+- window (version - 10,11)
+
+* 현재 프로그램 및 언어의 버전 정보
 - Python (version - 3.11.0)
 - bs4 (version - 4.12.2)
 - requests (version - 2.31.0)
@@ -39,3 +42,12 @@
 - Android Studio (version - 2022.2.1)
 
 ## 
+
+
+# 연락처(Contact information)
+프로젝트 총괄, 데이터 수집 담당: 
+    * 윤정섭 (email - cbnuyjs2022@gmail.com)
+프로젝트 디자인 담당:
+    * 박상현 (email - )
+    * 조민기 (email - )
+
