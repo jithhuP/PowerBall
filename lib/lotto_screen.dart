@@ -32,6 +32,13 @@ class LottoScreen extends StatelessWidget {
       ),
       body: const Column(
         children: [
+          SizedBox(
+            height: 50.0,
+          ),
+          Text(
+            '이번 추천 번호는...',
+            style: TextStyle(fontSize: 35.0),
+          ),
           RecommendLotto(),
         ],
       ),

@@ -198,7 +198,7 @@ class App extends State<MyApp> {
                       children: [
                         // 로또 번호 분석 텍스트
                         Border_text(
-                          text: "로또 번호 분석 : 최근 50회 번호 분석",
+                          text: "로또 번호 분석 : 최근 50회 : 총 번호 비율",
                           bdColor: ftColor[0 + darkMode],
                           txtColor: ftColor[0 + darkMode],
                           fontsize: 22.0,

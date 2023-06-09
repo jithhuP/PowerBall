@@ -199,16 +199,19 @@ class RecommendLotto extends StatelessWidget {
         if (snapshot.hasData) {
           List<String> data = extractNum(snapshot.data);
           Set<int> num = combNum(data);
-          return Row(
-            children: [
-              for (int i = 0; i < 7; i++) ...{
-                LottoBall(
-                  numColor: ftColor[0 + darkMode],
-                  num: data[num.elementAt(i)],
-                  ballColor: ballColor[i],
-                )
-              },
-            ],
+          return Card(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                for (int i = 0; i < 7; i++) ...{
+                  LottoBall(
+                    numColor: ftColor[0 + darkMode],
+                    num: data[num.elementAt(i)],
+                    ballColor: ballColor[i],
+                  )
+                },
+              ],
+            ),
           );
         } else {
           return const Center(
