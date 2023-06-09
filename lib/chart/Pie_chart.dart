@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../chart/total_pie_chart.dart';
 import '../chart/fifty_pie_chart.dart';
 
-
 class Pie_chart extends StatelessWidget {
   const Pie_chart({Key? key}) : super(key: key);
   @override
