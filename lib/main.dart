@@ -195,42 +195,9 @@ class App extends State<MyApp> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // 최근 추천 번호 텍스트
-                        Border_text(
-                          text: "최근 추천 번호",
-                          bdColor: ftColor[0 + darkMode],
-                          txtColor: ftColor[0 + darkMode],
-                          fontsize: 22.0,
-                          bdheight: 55.0,
-                          pdsize: 8.5,
-                        ),
-                        // 빈공간 넣기
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        // 통계 : 최근 추천 번호
-                        Container(
-                          width: 195.0,
-                          height: 200.0,
-                          // 영역 색상
-                          decoration: BoxDecoration(
-                            color: ftColor[2 + darkMode],
-                            borderRadius: BorderRadius.circular(25.0),
-                            border: Border.all(
-                              color: ftColor[0 + darkMode],
-                              width: 4.0,
-                            ),
-                          ),
-                          // child: ,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
                         // 로또 번호 분석 텍스트
                         Border_text(
-                          text: "로또 번호 분석",
+                          text: "로또 번호 분석 : 최근 50회 번호 분석",
                           bdColor: ftColor[0 + darkMode],
                           txtColor: ftColor[0 + darkMode],
                           fontsize: 22.0,
@@ -243,7 +210,7 @@ class App extends State<MyApp> {
                         ),
                         // 통계 : 로또 번호 분석
                         Container(
-                          width: 195.0,
+                          width: 400.0,
                           height: 200.0,
                           // 영역 색상
                           decoration: BoxDecoration(
