@@ -359,24 +359,25 @@ class LinkArticle extends StatelessWidget {
       onTap: () => launchUrl(
         Uri.parse(url),
       ),
-      child: Container(
-        alignment: Alignment.centerLeft,
+      child: SizedBox(
         width: double.infinity,
         height: 75.0,
-        decoration: const BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: 3.0),
+        child: Card(
+          color: ftColor[2 + darkMode],
+          elevation: 6.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Text(
-            title,
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              color: ftColor[0 + darkMode],
-              fontFamily: 'KBOGothic',
-              fontSize: 20.0,
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Text(
+              title,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: ftColor[0 + darkMode],
+                fontFamily: 'KBOGothic',
+                fontSize: 20.0,
+              ),
             ),
           ),
         ),
