@@ -7,27 +7,29 @@
 
 # APP 설치 방법 
 
-(추가)+APK 파일로 만들고 파일을 설치할 수 있게 해야함.
-
+(주석)+APK 파일로 만들고 파일을 설치할 수 있게 해야함.
 
 앱을 직접적으로 돌리고 싶을 경우 아래 방법을 통해 해결이 가능합니다.
 
 
-
 ## 설치 링크
-[Flutter SDK](https://docs.flutter.dev/get-started/install/windows)(링크) SDK 파일을 다운 받는습니다. (해당 파일은 프로그램을 실행시키기 위한 zip 파일 입니다.) 
+* APK 파일을 다운로드.(수정 예정)
 
-[Visual Studio](https://code.visualstudio.com/Download)(링크)혹은 [Android Studio](https://developer.android.com/studio)(링크)를 다운 받아 Flutter SDK 파일을 실행시킬 수 있습니다.
+* [Flutter SDK](https://docs.flutter.dev/get-started/install/windows)(링크) SDK 파일을 다운 받는습니다. (해당 파일은 프로그램을 실행시키기 위한 zip 파일 입니다.) 
 
-그 외에도 데이터 크롤링을 위한 추가적인 설치 파일이 존재합니다. 아래 (데이터 크롤링을 위한 추가적인 설치)에서 내용을 포함하고 있습니다.
+* [Visual Studio](https://code.visualstudio.com/Download)(링크)혹은 [Android Studio](https://developer.android.com/studio)(링크)를 다운 받아 Flutter SDK 파일을 실행시킬 수 있습니다.
 
-## 설치 방법
+    그 외에도 데이터 크롤링을 위한 추가적인 설치 파일이 존재합니다. 아래 (데이터 크롤링을 위한 추가적인 설치)에서 내용을 포함하고 있습니다.
+
+## 개발 환경 설치 방법
 * [블로그: 플러터 VS Code에서 개발환경 구축](https://fre2-dom.tistory.com/175)(링크)
 * [블로그: Android Studio 에서 Flutter 시작하기](https://blog.yena.io/studynote/2020/02/04/Android-Flutter-Install.html)(링크)
 
     VS Code와 Android Studio에서 Flutter 개발환경을 구축하는 방법을 자세히 알려줍니다.  
 
 ## 실행 방법
+* APK 파일을 다운 받아 실행한다.(모바일)
+* Source Code zip을 다운받는다. 다운 받은 파일을 개발 환경 파일에 덮어씌우기를 한다. 실행한다.
 
 # 의존성 (dependency)
 
@@ -90,7 +92,7 @@
  * 윤정섭 (email - cbnuyjs2022@gmail.com)
 
 프로젝트 디자인 담당:
- * 박상현 (email - )
+ * 박상현 (email - mks168810@gmail.com)
  * 조민기 (email - jominki4637@gmail.com)
 
 # 라이선스 및 약관
