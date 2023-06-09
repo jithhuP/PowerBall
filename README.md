@@ -24,7 +24,10 @@
 ## 설치 방법
 * [블로그: 플러터 VS Code에서 개발환경 구축](https://fre2-dom.tistory.com/175)(링크)
 * [블로그: Android Studio 에서 Flutter 시작하기](https://blog.yena.io/studynote/2020/02/04/Android-Flutter-Install.html)(링크)
-위는 VS Code와 Android Studio에서 Flutter 개발환경을 구축하는 방법을 자세히 알려줍니다.  
+
+    VS Code와 Android Studio에서 Flutter 개발환경을 구축하는 방법을 자세히 알려줍니다.  
+
+## 실행 방법
 
 # 의존성 (dependency)
 
@@ -52,6 +55,7 @@
 * Android Studio
 
 설치 후, 해당 프로그램에서 (PowerShell) or (터미널) 을 찾습니다.
+
 (PowerShell) or (터미널)에서 아래와 같이 원하는 패키지를 설치할 수 있습니다.
 
 * bs4 
