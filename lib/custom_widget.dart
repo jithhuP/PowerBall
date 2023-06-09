@@ -216,11 +216,12 @@ class RecommendLotto extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      '추천 1',
+                    Text(
+                      '추천',
                       style: TextStyle(
                         fontSize: 20.0,
                         fontFamily: 'KBOGothic',
+                        color: ftColor[0 + darkMode],
                       ),
                     ),
                     Row(
@@ -228,7 +229,7 @@ class RecommendLotto extends StatelessWidget {
                       children: [
                         for (int i = 0; i < 7; i++) ...{
                           LottoBall(
-                            numColor: ftColor[0 + darkMode],
+                            numColor: Colors.black,
                             num: data[num.elementAt(i)],
                             ballColor: ballColor[i],
                           )

@@ -30,23 +30,29 @@ class LottoScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: const Column(
-        children: [
-          SizedBox(
-            height: 50.0,
-          ),
-          Text(
-            '이번 추천 번호는...',
-            style: TextStyle(
-              fontSize: 35.0,
-              fontFamily: 'KBOGothic',
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(
+              height: 50.0,
             ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          RecommendLotto(),
-        ],
+            Text(
+              '이번 추천 번호는...',
+              style: TextStyle(
+                fontSize: 35.0,
+                fontFamily: 'KBOGothic',
+                color: ftColor[0 + darkMode],
+              ),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            for (int i = 0; i < 8; i++) ...[
+              const RecommendLotto(),
+            ]
+          ],
+        ),
       ),
     );
   }

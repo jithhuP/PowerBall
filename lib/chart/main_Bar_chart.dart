@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:practice/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class main_Bar_chart extends StatefulWidget {
@@ -56,13 +55,16 @@ class _BarDefaultState extends State {
         xValueMapper: (ChartSampleData sales, _) => sales.x,
         yValueMapper: (ChartSampleData sales, _) => sales.y,
         name: '50 횟수',
-        color: ftColor[0 + darkMode],
+        color: Colors.blue,
+        trackColor: Colors.white,
       ),
       BarSeries<ChartSampleData, String>(
-          dataSource: chartData!,
-          xValueMapper: (ChartSampleData sales, _) => sales.x,
-          yValueMapper: (ChartSampleData sales, _) => sales.secondSeriesYValue,
-          name: '총 횟수'),
+        dataSource: chartData!,
+        xValueMapper: (ChartSampleData sales, _) => sales.x,
+        yValueMapper: (ChartSampleData sales, _) => sales.secondSeriesYValue,
+        name: '총 횟수',
+        color: Colors.red,
+      ),
     ];
   }
 
