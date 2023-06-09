@@ -68,12 +68,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-<<<<<<<<< Temporary merge branch 1
-=========
+
   assets:
     - assets/images/flutter_logo.png
     - assets/images/account.png
->>>>>>>>> Temporary merge branch 2
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

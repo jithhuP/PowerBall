@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<<<< Temporary merge branch 1
-import 'total_pie_chart.dart';
-import 'fifty_pie_chart.dart';
-=========
 import '../chart/total_pie_chart.dart';
 import '../chart/fifty_pie_chart.dart';
->>>>>>>>> Temporary merge branch 2
 
 class Pie_chart extends StatelessWidget {
   const Pie_chart({Key? key}) : super(key: key);

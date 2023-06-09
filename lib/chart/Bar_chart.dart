@@ -1,78 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import '../chart/total_Bar_chart.dart';
+import '../chart/fifty_Bar_chart.dart';
 
-class Bar_chart extends StatefulWidget {
-  const Bar_chart({super.key});
-  @override
-  State<StatefulWidget> createState() => _BarDefaultState();
-}
-
-class _BarDefaultState extends State {
-  _BarDefaultState();
-  List<ChartSampleData>? chartData;
-
-  @override
-  void initState() {
-    chartData = <ChartSampleData>[
-      ChartSampleData('1~5', 166, 100),
-      ChartSampleData('6~10', 55, 60),
-      ChartSampleData('11~15', 70, 76),
-      ChartSampleData('16~20', 102, 160),
-      ChartSampleData('21~25', 155, 164),
-      ChartSampleData('26~30', 143, 167),
-      ChartSampleData('31~35', 120, 149),
-      ChartSampleData('36~40', 119, 112),
-      ChartSampleData('41~45', 132, 123)
-    ];
-    super.initState();
-  }
-
+class Bar_chart extends StatelessWidget {
+  const Bar_chart({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return _buildDefaultBarChart();
-  }
-
-  SfCartesianChart _buildDefaultBarChart() {
-    return SfCartesianChart(
-      plotAreaBorderWidth: 0,
-      title: ChartTitle(text:'50 횟수와 총 횟수 빈도 비교'),
-      legend: Legend(isVisible:true ),
-      primaryXAxis: CategoryAxis(
-        majorGridLines: const MajorGridLines(width: 0),
-      ),
-      primaryYAxis: NumericAxis(
-          majorGridLines: const MajorGridLines(width: 0),
-          numberFormat: NumberFormat.compact()),
-      series: _getDefaultBarSeries(),
-      tooltipBehavior: TooltipBehavior(enable: true),
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            body: Container(
+              child: ListView(
+                children: [
+                  Column(
+                    children: const [
+                      Text(
+                        '50 횟수 구간 평균',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      fifty_Bar_chart(),
+                      Text(
+                        '총 횟수 구간 평균',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      total_Bar_chart(),
+                    ],
+                  ),
+                ],
+              ),
+            )
+        )
     );
   }
-
-  List<BarSeries<ChartSampleData, String>> _getDefaultBarSeries() {
-    return <BarSeries<ChartSampleData, String>>[
-      BarSeries<ChartSampleData, String>(
-          dataSource: chartData!,
-          xValueMapper: (ChartSampleData sales, _) => sales.x as String,
-          yValueMapper: (ChartSampleData sales, _) => sales.y,
-          name: '50 횟수'),
-      BarSeries<ChartSampleData, String>(
-          dataSource: chartData!,
-          xValueMapper: (ChartSampleData sales, _) => sales.x as String,
-          yValueMapper: (ChartSampleData sales, _) => sales.secondSeriesYValue,
-          name: '총 횟수'),
-    ];
-  }
-
-  @override
-  void dispose() {
-    chartData!.clear();
-    super.dispose();
-  }
-}
-class ChartSampleData {
-  ChartSampleData(this.x, this.y, this.secondSeriesYValue);
-  final String x;
-  final int y;
-  final int secondSeriesYValue;
 }
