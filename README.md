@@ -21,6 +21,11 @@
 
 그 외에도 데이터 크롤링을 위한 추가적인 설치 파일이 존재합니다. 아래 (데이터 크롤링을 위한 추가적인 설치)에서 내용을 포함하고 있습니다.
 
+## 설치 방법
+* [블로그: 플러터 VS Code에서 개발환경 구축](https://fre2-dom.tistory.com/175)(링크)
+* [블로그: Android Studio 에서 Flutter 시작하기](https://blog.yena.io/studynote/2020/02/04/Android-Flutter-Install.html)(링크)
+위는 VS Code와 Android Studio에서 Flutter 개발환경을 구축하는 방법을 자세히 알려줍니다.  
+
 # 의존성 (dependency)
 
 ## POWERBALL 프로젝트 정보
