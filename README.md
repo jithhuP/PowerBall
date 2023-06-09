@@ -41,7 +41,7 @@
 - VS Code (version - 1.75.1)
 - Android Studio (version - 2022.2.1)
 
-## 
+## 추가적인 환경 설정 설치 패키지
 
 
 # 연락처(Contact information)
@@ -51,3 +51,7 @@
     * 박상현 (email - )
     * 조민기 (email - )
 
+# 라이선스 및 약관
+ * [Github 이용 약관](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)
+ * [Flutter Engine License](https://github.com/flutter/flutter/blob/master/LICENSE)
+ * [Flutter Framework License](https://github.com/flutter/flutter/blob/master/LICENSE)
