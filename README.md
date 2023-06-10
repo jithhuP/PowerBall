@@ -15,7 +15,7 @@
 
 ## 설치 링크
  (Android 모바일 환경)
-* [모바일 APK 파일](https://drive.google.com/file/d/1xpZa_aXatUUx_gwknKy9waa7bjmQZY2P/view?usp=sharing0)을 다운로드.
+* [모바일 APK 파일](https://drive.google.com/file/d/1xpZa_aXatUUx_gwknKy9waa7bjmQZY2P/view?usp=sharing0)을 다운로드. (POWERBALL apk version - 1.0.1)
 
  (Window 컴퓨터 환경)
 * [Flutter SDK](https://docs.flutter.dev/get-started/install/windows)(링크) SDK 파일을 다운 받는습니다. (해당 파일은 프로그램을 실행시키기 위한 zip 파일 입니다.) 
