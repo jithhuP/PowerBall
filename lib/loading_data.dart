@@ -27,7 +27,7 @@ List<String> extractNum(List<MapEntry<String, dynamic>>? data) {
   var count = 0;
   while (count != 15) {
     var minnum = 0;
-    int min = 9223372036854775807;
+    int min = 2147483647;
     for (int i = 0; i < data!.length; i++) {
       if (min > data[i].value && judgeNum(num, data[i].key)) {
         min = data[i].value;
