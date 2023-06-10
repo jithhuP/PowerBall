@@ -146,8 +146,8 @@ class PieChart1State extends State {
         case 0:
           return PieChartSectionData(
             color: AppColors.contentColorBlue,
-            value: 9.4,
-            title: '9.4%',
+            value: 10,
+            title: '10%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -159,8 +159,8 @@ class PieChart1State extends State {
         case 1:
           return PieChartSectionData(
             color: AppColors.contentColorYellow,
-            value: 9.7,
-            title: '9.7%',
+            value: 10.9,
+            title: '10.9%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -172,8 +172,8 @@ class PieChart1State extends State {
         case 2:
           return PieChartSectionData(
             color: AppColors.contentColorPurple,
-            value: 12.9,
-            title: '12.9%',
+            value: 12,
+            title: '12%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -185,8 +185,8 @@ class PieChart1State extends State {
         case 3:
           return PieChartSectionData(
             color: AppColors.contentColorGreen,
-            value: 10.6,
-            title: '10.6%',
+            value: 12,
+            title: '12%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -198,8 +198,8 @@ class PieChart1State extends State {
         case 4:
           return PieChartSectionData(
             color: AppColors.contentColorOrange,
-            value: 10.3,
-            title: '10.3%',
+            value: 10.6,
+            title: '10.6%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -211,8 +211,8 @@ class PieChart1State extends State {
         case 5:
           return PieChartSectionData(
             color: AppColors.contentColorPink,
-            value: 12,
-            title: '12%',
+            value: 11.7,
+            title: '11.7%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -224,8 +224,8 @@ class PieChart1State extends State {
         case 6:
           return PieChartSectionData(
             color: AppColors.contentColorCyan,
-            value: 14.9,
-            title: '14.9%',
+            value: 14.6,
+            title: '14.6%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -237,8 +237,8 @@ class PieChart1State extends State {
         case 7:
           return PieChartSectionData(
             color: AppColors.contentColorBlack,
-            value: 10,
-            title: '10%',
+            value: 8.9,
+            title: '8.9%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -250,8 +250,8 @@ class PieChart1State extends State {
         case 8:
           return PieChartSectionData(
             color: AppColors.contentColorRed,
-            value: 10.3,
-            title: '10.3%',
+            value: 9.4,
+            title: '9.4%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
