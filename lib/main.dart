@@ -53,8 +53,10 @@ class App extends State<MyApp> {
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 2.0,
+            vertical: 2.0,
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 최상단 빈공간 넣음
@@ -171,29 +173,22 @@ class App extends State<MyApp> {
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 // 번호 표시
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  // 로또 번호 출력 함수
-                  child:
-                      LoadingLottoNum(), /*Text(
-                    '1 - 2 - 3 - 4 - 5 - 6',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 45.0,
-                    ),
-                  ),*/
+                child:
+                    // 로또 번호 출력 함수
+                    const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4.0),
+                  child: LoadingLottoNum(),
                 ),
               ),
               // 빈 공간 넣기
               const SizedBox(
-                height: 40.0,
+                height: 20.0,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // 로또 번호 분석 텍스트
@@ -211,7 +206,6 @@ class App extends State<MyApp> {
                         ),
                         // 통계 : 로또 번호 분석
                         Container(
-                          width: 400.0,
                           height: 200.0,
                           // 영역 색상
                           decoration: BoxDecoration(
@@ -226,44 +220,44 @@ class App extends State<MyApp> {
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              // 빈 공간 넣기
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 15.0,
-                    height: 15.0,
-                    color: Colors.blue,
-                  ),
-                  Text(
-                    ' : 최근 50회',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      fontFamily: 'KBOGothic',
-                      color: ftColor[0 + darkMode],
-                    ),
                   ),
                   const SizedBox(
-                    width: 10.0,
+                    height: 10.0,
                   ),
-                  Container(
-                    width: 15.0,
-                    height: 15.0,
-                    color: Colors.red,
-                  ),
-                  Text(
-                    ' : 총 횟수',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      fontFamily: 'KBOGothic',
-                      color: ftColor[0 + darkMode],
-                    ),
+                  // 빈 공간 넣기
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 15.0,
+                        height: 15.0,
+                        color: Colors.blue,
+                      ),
+                      Text(
+                        ' : 최근 50회',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontFamily: 'KBOGothic',
+                          color: ftColor[0 + darkMode],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Container(
+                        width: 15.0,
+                        height: 15.0,
+                        color: Colors.red,
+                      ),
+                      Text(
+                        ' : 총 횟수',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontFamily: 'KBOGothic',
+                          color: ftColor[0 + darkMode],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

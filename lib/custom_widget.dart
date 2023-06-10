@@ -304,15 +304,13 @@ class LoadingLottoNum extends StatelessWidget {
         if (snapshot.hasData) {
           List<dynamic>? data = snapshot.data;
           return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               for (int i = 0; i < 7; i++) ...[
                 LottoBall(
                   numColor: Colors.black,
                   num: data![i],
                   ballColor: ballColor[i],
-                ),
-                const SizedBox(
-                  width: 5,
                 ),
               ]
             ],
@@ -510,8 +508,10 @@ class UserInfo extends StatelessWidget {
             focusColor: Colors.black,
             title: const Text('기사'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ReportScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ReportScreen()));
             },
             trailing: const Icon(Icons.navigate_next),
           ),
@@ -521,10 +521,8 @@ class UserInfo extends StatelessWidget {
             focusColor: Colors.black,
             title: const Text('로또'),
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const LottoScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LottoScreen()));
             },
             trailing: const Icon(Icons.navigate_next),
           ),
@@ -534,10 +532,8 @@ class UserInfo extends StatelessWidget {
             focusColor: Colors.black,
             title: const Text('행운'),
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const GoGame()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const GoGame()));
             },
             trailing: const Icon(Icons.navigate_next),
           ),
