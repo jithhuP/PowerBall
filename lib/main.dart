@@ -130,55 +130,54 @@ class App extends State<MyApp> {
               const SizedBox(
                 height: 15.0,
               ),
-              Row(
-                // 최근 로또 번호
+              Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // 최근 로또 번호
                       children: [
-                        Text(
-                          '최근 로또 번호',
-                          style: TextStyle(
-                            color: ftColor[0 + darkMode],
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'KBOGothic',
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 205,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              '최근 로또 번호',
+                              style: TextStyle(
+                                color: ftColor[0 + darkMode],
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'KBOGothic',
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-              // 빈 공간 넣기
-              const SizedBox(
-                height: 10.0,
-              ),
-              // 추천 번호 표시 영역
-              Container(
-                alignment: AlignmentDirectional.center,
-                height: 130,
-                // 색상 및 테두리
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: ftColor[0 + darkMode],
-                    width: 4.0,
+                  // 빈 공간 넣기
+                  const SizedBox(
+                    height: 10.0,
                   ),
-                  color: ftColor[2 + darkMode],
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                // 번호 표시
-                child:
-                    // 로또 번호 출력 함수
-                    const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4.0),
-                  child: LoadingLottoNum(),
-                ),
+                  // 추천 번호 표시 영역
+                  Container(
+                    alignment: AlignmentDirectional.center,
+                    height: 130,
+                    // 색상 및 테두리
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: ftColor[0 + darkMode],
+                        width: 4.0,
+                      ),
+                      color: ftColor[2 + darkMode],
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    // 번호 표시
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4.0),
+                      child: LoadingLottoNum(),
+                    ),
+                  ),
+                ],
               ),
               // 빈 공간 넣기
               const SizedBox(

@@ -303,17 +303,20 @@ class LoadingLottoNum extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<dynamic>? data = snapshot.data;
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              for (int i = 0; i < 7; i++) ...[
-                LottoBall(
-                  numColor: Colors.black,
-                  num: data![i],
-                  ballColor: ballColor[i],
-                ),
-              ]
-            ],
+          return Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                for (int i = 0; i < 7; i++) ...[
+                  LottoBall(
+                    numColor: Colors.black,
+                    num: data![i],
+                    ballColor: ballColor[i],
+                  ),
+                ]
+              ],
+            ),
           );
         } else {
           return const Center(
