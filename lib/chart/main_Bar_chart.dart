@@ -36,8 +36,8 @@ class _BarDefaultState extends State {
   SfCartesianChart _buildDefaultBarChart() {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
-      title: ChartTitle(text:'총 횟수 평균'),
-      legend: Legend(isVisible:false ),
+      legend: Legend(isVisible: false),
+
       primaryXAxis: CategoryAxis(
         majorGridLines: const MajorGridLines(width: 0),
       ),
@@ -52,10 +52,20 @@ class _BarDefaultState extends State {
   List<BarSeries<ChartSampleData, String>> _getDefaultBarSeries() {
     return <BarSeries<ChartSampleData, String>>[
       BarSeries<ChartSampleData, String>(
-          dataSource: chartData!,
-          xValueMapper: (ChartSampleData sales, _) => sales.x as String,
-          yValueMapper: (ChartSampleData sales, _) => sales.y,
-          name: '총 횟수'),
+        dataSource: chartData!,
+        xValueMapper: (ChartSampleData sales, _) => sales.x,
+        yValueMapper: (ChartSampleData sales, _) => sales.y,
+        name: '50 횟수',
+        color: Colors.blue,
+        trackColor: Colors.white,
+      ),
+      BarSeries<ChartSampleData, String>(
+        dataSource: chartData!,
+        xValueMapper: (ChartSampleData sales, _) => sales.x,
+        yValueMapper: (ChartSampleData sales, _) => sales.secondSeriesYValue,
+        name: '총 횟수',
+        color: Colors.red,
+      ),
     ];
   }
 
@@ -65,9 +75,11 @@ class _BarDefaultState extends State {
     super.dispose();
   }
 }
+
 class ChartSampleData {
   ChartSampleData(this.x, this.y, this.secondSeriesYValue);
   final String x;
-  final double y;
-  final double secondSeriesYValue;
+  final int y;
+  final int secondSeriesYValue;
 }
+

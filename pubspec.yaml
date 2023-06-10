@@ -43,6 +43,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   firebase_core: ^2.13.1
+  webview_flutter: ^4.2.2
 
 
 dev_dependencies:

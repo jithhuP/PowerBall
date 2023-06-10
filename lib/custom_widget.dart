@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:practice/loading_data.dart';
 import 'package:practice/main.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'report_screen.dart';
+import 'setting_screen.dart';
 
 // 최하단 메뉴 4개 버튼 Class
 class icon_button extends StatelessWidget {
@@ -177,6 +179,109 @@ class SettingText extends StatelessWidget {
   }
 }
 
+class RecommendLotto extends StatelessWidget {
+  const RecommendLotto({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Color> ballColor = [
+      Colors.blue,
+      Colors.red,
+      Colors.yellow,
+      Colors.green,
+      Colors.white,
+      Colors.deepOrange,
+      Colors.lime
+    ];
+    return FutureBuilder(
+      future: getLottoData(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<String> data = extractNum(snapshot.data);
+          Set<int> num = combNum(data);
+          return SizedBox(
+            height: 95.0,
+            width: double.infinity,
+            child: Card(
+              elevation: 4.0,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color: ftColor[0 + darkMode],
+                  width: 2.0,
+                ),
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              color: ftColor[2 + darkMode],
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '추천',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'KBOGothic',
+                        color: ftColor[0 + darkMode],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        for (int i = 0; i < 7; i++) ...{
+                          LottoBall(
+                            numColor: Colors.black,
+                            num: data[num.elementAt(i)],
+                            ballColor: ballColor[i],
+                          )
+                        },
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+}
+
+class LoadingNews extends StatelessWidget {
+  const LoadingNews({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: getNews(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<Map<String, dynamic>>? data = snapshot.data;
+          return Column(
+            children: [
+              for (var news in data!) ...{
+                LinkArticle(
+                  url: news.values.toList()[1],
+                  title: news.values.toList()[0],
+                ),
+              },
+            ],
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+}
+
 // 데이터 불러오기 및 LottoBall 에 적용
 class LoadingLottoNum extends StatelessWidget {
   const LoadingLottoNum({super.key});
@@ -201,7 +306,7 @@ class LoadingLottoNum extends StatelessWidget {
             children: [
               for (int i = 0; i < 7; i++) ...[
                 LottoBall(
-                  numColor: ftColor[0 + darkMode],
+                  numColor: Colors.black,
                   num: data![i],
                   ballColor: ballColor[i],
                 ),
@@ -271,36 +376,184 @@ class LottoBall extends StatelessWidget {
 }
 
 class LinkArticle extends StatelessWidget {
+  final String url;
+  final String title;
+
   const LinkArticle({
     super.key,
+    required this.url,
+    required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => launchUrl(
-        Uri.parse('https://www.lotto.co.kr/article/list/AC01'),
+        Uri.parse(url),
       ),
-      child: Container(
-        alignment: Alignment.centerLeft,
+      child: SizedBox(
         width: double.infinity,
         height: 75.0,
-        decoration: const BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: 3.0),
+        child: Card(
+          color: ftColor[2 + darkMode],
+          elevation: 6.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
           ),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.all(5.0),
-          child: Text(
-            "기사1 제목",
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontFamily: 'KBOGothic',
-              fontSize: 20.0,
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Text(
+              title,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: ftColor[0 + darkMode],
+                fontFamily: 'KBOGothic',
+                fontSize: 20.0,
+              ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class GoGame extends StatelessWidget {
+  const GoGame({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => launchUrl(
+        Uri.parse('https://jhlov.github.io/baseball/'),
+      ),
+      child: const Scaffold(
+        backgroundColor: Colors.white,
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "숫자 야구",
+                  style: TextStyle(
+                    fontFamily: "KBOGothic",
+                    fontSize: 75.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text(
+                  "게임 시작",
+                  style: TextStyle(
+                    fontFamily: "KBOGothic",
+                    fontSize: 50.0,
+                  ),
+                ),
+                Text(
+                  "하려면 한번 더 클릭",
+                  style: TextStyle(
+                    fontFamily: "KBOGothic",
+                    fontSize: 25.0,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class UserInfo extends StatelessWidget {
+  const UserInfo({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          UserAccountsDrawerHeader(
+            currentAccountPicture: const CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/images/account.png')),
+            accountName: const Text('User'),
+            accountEmail: const Text('user123@abc.com'),
+            decoration: BoxDecoration(
+              color: Colors.red[200],
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('홈'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyApp()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.description_outlined),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('기사'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyApp()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.onetwothree),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('로또'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ReportScreen()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.diamond_outlined),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('행운'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ReportScreen()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            iconColor: Colors.black,
+            focusColor: Colors.black,
+            title: const Text('설정'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingScreen()));
+            },
+            trailing: const Icon(Icons.navigate_next),
+          )
+        ],
       ),
     );
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:practice/custom_widget.dart';
 import 'package:practice/main.dart';
+import 'custom_widget.dart';
 
-class ReportScreen extends StatelessWidget {
-  const ReportScreen({super.key});
+class LottoScreen extends StatelessWidget {
+  const LottoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ReportScreen extends StatelessWidget {
           children: [
             // Bar 텍스트
             Text(
-              '기사',
+              '로또 추천',
               style: TextStyle(
                 color: ftColor[0 + darkMode],
                 fontFamily: "KBOGothic",
@@ -30,10 +30,27 @@ class ReportScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            LoadingNews(),
+            const SizedBox(
+              height: 50.0,
+            ),
+            Text(
+              '이번 추천 번호는...',
+              style: TextStyle(
+                fontSize: 35.0,
+                fontFamily: 'KBOGothic',
+                color: ftColor[0 + darkMode],
+              ),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            for (int i = 0; i < 8; i++) ...[
+              const RecommendLotto(),
+            ]
           ],
         ),
       ),
