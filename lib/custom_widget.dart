@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice/loading_data.dart';
+import 'package:practice/lotto_screen.dart';
 import 'package:practice/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'report_screen.dart';
@@ -510,7 +511,7 @@ class UserInfo extends StatelessWidget {
             title: const Text('기사'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const MyApp()));
+                  MaterialPageRoute(builder: (context) => const ReportScreen()));
             },
             trailing: const Icon(Icons.navigate_next),
           ),
@@ -523,7 +524,7 @@ class UserInfo extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ReportScreen()));
+                      builder: (context) => const LottoScreen()));
             },
             trailing: const Icon(Icons.navigate_next),
           ),
@@ -536,7 +537,7 @@ class UserInfo extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ReportScreen()));
+                      builder: (context) => const GoGame()));
             },
             trailing: const Icon(Icons.navigate_next),
           ),

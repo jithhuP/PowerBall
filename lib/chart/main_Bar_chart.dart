@@ -79,7 +79,7 @@ class _BarDefaultState extends State {
 class ChartSampleData {
   ChartSampleData(this.x, this.y, this.secondSeriesYValue);
   final String x;
-  final int y;
-  final int secondSeriesYValue;
+  final double y;
+  final double secondSeriesYValue;
 }
 
