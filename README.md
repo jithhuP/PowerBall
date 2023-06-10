@@ -7,14 +7,17 @@
 
 # APP 설치 방법 
 
-(주석)+APK 파일로 만들고 파일을 설치할 수 있게 해야함.
-
 앱을 직접적으로 돌리고 싶을 경우 아래 방법을 통해 해결이 가능합니다.
 
+## 설치 환경 종류
+* Window 
+* Android
 
 ## 설치 링크
-* APK 파일을 다운로드.(수정 예정)
+ (Android 모바일 환경)
+* [모바일 APK 파일](https://drive.google.com/file/d/1xpZa_aXatUUx_gwknKy9waa7bjmQZY2P/view?usp=sharing0)을 다운로드.
 
+ (Window 컴퓨터 환경)
 * [Flutter SDK](https://docs.flutter.dev/get-started/install/windows)(링크) SDK 파일을 다운 받는습니다. (해당 파일은 프로그램을 실행시키기 위한 zip 파일 입니다.) 
 
 * [Visual Studio](https://code.visualstudio.com/Download)(링크)혹은 [Android Studio](https://developer.android.com/studio)(링크)를 다운 받아 Flutter SDK 파일을 실행시킬 수 있습니다.
